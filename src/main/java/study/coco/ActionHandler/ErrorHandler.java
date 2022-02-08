@@ -6,11 +6,12 @@ import study.coco.Game;
 public class ErrorHandler extends Handler {
 
     public ErrorHandler(Game game) {
-        super(game);
+        super(game, "error");
     }
 
-    public String handle() {
-        return "What do you mean with [" + this.game.getLineInput() + "]?";
+    @Override
+    public String getMessage() {
+        return "What do you mean with '" + this.game.getLineInput() + "'?";
     }
 
     @Override

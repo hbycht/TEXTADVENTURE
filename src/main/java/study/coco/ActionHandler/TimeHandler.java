@@ -7,10 +7,12 @@ import study.coco.Game;
 
 public class TimeHandler extends CommandHandler {
 
+    private static final String[] phrases = {"time", "t", "date", "d"};
+    private static final String message = "Es ist 12:12 Uhr am 12.12.1212.";
+    private static final String type = "time";
+
     public TimeHandler(Game game) {
-        super(game);
-        this.phrases = new String[]{"time", "t", "date", "d"};
-        this.message = "Es ist 12:12 Uhr am 12.12.1212.";
+        super(game, type, phrases, message);
     }
 
     

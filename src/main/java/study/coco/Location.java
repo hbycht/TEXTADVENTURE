@@ -3,9 +3,9 @@ package study.coco;
 import java.util.ArrayList;
 
 public class Location {
-    private String id;
-    private String name;
-    private String description;
+    private final String id;
+    private final String name;
+    private final String description;
     private Inventory inventory;
 
     public Location(String id, String name, String description) {

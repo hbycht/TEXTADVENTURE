@@ -1,10 +1,10 @@
 package study.coco;
 
 public class Item {
-    private String id;
-    private String name;
-    private String description;
-    private String type;
+    private final String id;
+    private final String name;
+    private final String description;
+    private final String type;
 
     public Item(String id, String name, String description, String type) {
         this.id = id;

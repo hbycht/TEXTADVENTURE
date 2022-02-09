@@ -31,8 +31,6 @@ public class Game {
     // there is always a current handler for handling the terminal input
     Handler currentHandler;
 
-
-
     // game state and player position
     private boolean finished;
     private int xPos;
@@ -48,6 +46,21 @@ public class Game {
         this.handlers.add(new TimeHandler(this));
         this.handlers.add(new ExitHandler(this));
         this.handlers.add(new CommandHandler(this, "move", new String[]{"move", "m", "go", "g"}, "You went 1 step."));
+
+        // init all items
+        // ...
+
+        // init all locations
+        Location start = new Location("start", "center", "The place where everything began.");
+        Location north = new Location("n", "north", "It's cold and freezy.");
+        Location south = new Location("s", "south", "Oh nice, it's super sunny.");
+        Location west = new Location("w", "west", "Puuh, it's a very windy place.");
+        Location east = new Location("e", "east", "A quite and calm place.");
+
+        // init the player
+        Player player = new Player(start);
+        // add some items to players inventory
+        // ...
 
         finished = false;
         xPos = 0;

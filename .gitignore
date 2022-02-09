@@ -3,3 +3,4 @@
 target/
 .DS_Store
 public/
+src/main/java/adventOfCode

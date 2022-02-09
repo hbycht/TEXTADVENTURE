@@ -4,15 +4,12 @@ import study.coco.Game;
 
 public class ExitHandler extends CommandHandler{
 
-    public ExitHandler(Game game) {
-        super(game, "exit");
-        this.phrases = new String[]{"exit", "quit", "q", "x"};
-        this.message = "Bye, bye! See you soon!";
-    }
+    private static final String[] phrases = {"exit", "quit", "q", "x"};
+    private static final String message = "Bye, bye! See you soon!";
+    private static final String type = "exit";
 
-    @Override
-    protected String[] getPhrases() {
-        return this.phrases;
+    public ExitHandler(Game game) {
+        super(game, type, phrases, message);
     }
 
 }

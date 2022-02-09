@@ -2,11 +2,12 @@ package study.coco.ActionHandler;
 
 import study.coco.Game;
 
+import java.util.ArrayList;
+
 /**
  * With the CommandHandler you can build every Handler which listens to a command on-the-fly.
  * Just give it some phrases and a reply message.
  */
-
 public class CommandHandler extends Handler {
 
     protected String command;
@@ -39,7 +40,7 @@ public class CommandHandler extends Handler {
         return this.phrases;
     }
 
-    public String getMessage() {
-        return this.message;
-    }
+//    public String getMessage() {
+//        return this.message;
+//    }
 }

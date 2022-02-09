@@ -31,6 +31,8 @@ public class Game {
     // there is always a current handler for handling the terminal input
     Handler currentHandler;
 
+
+
     // game state and player position
     private boolean finished;
     private int xPos;

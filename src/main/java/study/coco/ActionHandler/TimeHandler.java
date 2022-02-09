@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import study.coco.Game;
 
-
 public class TimeHandler extends CommandHandler {
 
     private static final String[] phrases = {"time", "t", "date", "d"};
@@ -14,6 +13,4 @@ public class TimeHandler extends CommandHandler {
     public TimeHandler(Game game) {
         super(game, type, phrases, message);
     }
-
-    
 }

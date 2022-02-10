@@ -31,11 +31,21 @@ public class Inventory {
 
     // show all item descriptions
     public String listItems() {
-        String descriptions = "";
-        for (Item item : this.items){
-            descriptions += item.getDescription() + "\n";
+        int itemCount = this.items.size();
+
+        String names = "";
+
+        // if there are items
+        if(itemCount > 0){
+            for (int i = 0; i < itemCount; i++){
+                names += this.items.get(i).getName();
+                if(i < itemCount - 2)
+                    names += ", "; // add a comma to every item BUT the last
+                else if(i < itemCount - 1)
+                    names += " & "; // add a '&' to every item BUT the last
+            }
         }
-        return descriptions;
+        return names.toUpperCase();
     }
 
     public ArrayList<Item> getItems() {

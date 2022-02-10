@@ -11,19 +11,22 @@ import study.coco.Player;
 public class MoveHandler extends CommandHandler {
 
     private static final String[] phrases = {"north", "south", "east", "west", "n", "s", "e", "w"};
-    private static final String defaultMsg = "Let's see what we get here.";
-    private static final String errorMsg = "From here I can't go %s.";
-    private static final String stepMsg = "I went %s.\n";
+    private static final String LetsSeeMsg = "Let's see what we get here...\n";
+    private static final String errorMsg = "From here we can't go %s.";
+    private static final String stepMsg = "We went %s.\n";
     private static final String type = "move";
     private Direction direction;
 
     public MoveHandler(Game game) {
-        super(game, type, phrases, defaultMsg);
+        super(game, type, phrases, LetsSeeMsg);
     }
 
     @Override
     public void handle() {
         super.handle();
+
+        // Message to print
+        String message = "";
 
         // Update input direction
         this.getDirection();
@@ -33,13 +36,20 @@ public class MoveHandler extends CommandHandler {
         // Get directed Location
         Location directedLocation = player.getPosition().getGates()[this.direction.asIndex()];
 
+        // CHANGE LOCATION
         if(directedLocation != null){
             player.setPosition(directedLocation);
-            System.out.println(String.format(stepMsg, this.direction.asString()));
-            this.setMessage(defaultMsg);
-        } else {
-            this.setMessage(String.format(errorMsg, this.direction.asString()));
+            message += String.format(stepMsg, this.direction.asString());
+            message += LetsSeeMsg;
+            message += directedLocation.getFullDescription();
         }
+        // CAN'T CHANGE LOCATION
+        else {
+            message = String.format(errorMsg, this.direction.asString());
+        }
+
+        this.setMessage(message);
+//        System.out.println(message);
     }
 
     private Direction getDirection(){

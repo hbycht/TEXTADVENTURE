@@ -45,6 +45,7 @@ public class Game {
         // init & add all necessary game handlers to the handler list
         this.handlers.add(new TimeHandler(this));
         this.handlers.add(new ExitHandler(this));
+        this.handlers.add(new MoveHandler(this));
         this.handlers.add(new CommandHandler(this, "move", new String[]{"move", "m", "go", "g"}, "You went 1 step."));
 
         // init all items
@@ -80,6 +81,8 @@ public class Game {
      *  Basic game logic.
      */
     public void run() {
+        System.out.println(this.getClass().getSimpleName().toLowerCase(Locale.ROOT));
+
         // run until game finished
         while (!this.finished) {
             // get current handler and process game logic
@@ -116,7 +119,7 @@ public class Game {
      */
     private Handler getCurrentHandler() {
         // ask for and store the given input
-        this.lineInput = this.reader.readLine("What do you want to do?\n >> ");
+        this.lineInput = this.reader.readLine("What do you want to do?\n >> ").trim();
 
         // check if user input matches a valid command for a handler
         for (Handler handler : this.handlers) {
@@ -133,10 +136,9 @@ public class Game {
      * Processes the game logic: it executes the handle function of the current handler.
      */
     private void processGameLogic() {
-        String type = currentHandler.getType();
-
+        // for debugging
         this.handleCount++;
-        this.handleTypes += type + " ";
+        this.handleTypes += currentHandler.getType() + " ";
 
         // execute the handler actions
         currentHandler.handle();
@@ -167,7 +169,7 @@ public class Game {
      * @return {@code String} that holds the answer to the given message.
      */
     public String getLineInput(String terminalMsg){
-        this.lineInput = this.reader.readLine(terminalMsg);
+        this.lineInput = this.reader.readLine(terminalMsg).trim();
         return this.lineInput;
     }
 }

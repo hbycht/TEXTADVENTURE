@@ -36,11 +36,13 @@ public class CommandHandler extends Handler {
         return false;
     }
 
+    @Override
+    public void handle() {
+
+    }
+
     protected String[] getPhrases() {
         return this.phrases;
     }
 
-//    public String getMessage() {
-//        return this.message;
-//    }
 }

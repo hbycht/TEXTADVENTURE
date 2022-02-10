@@ -5,6 +5,10 @@ import java.util.ArrayList;
 public class Inventory {
     private ArrayList<Item> items;
 
+    public Inventory() {
+        this.items = new ArrayList<>();
+    }
+
     public Item addItem(Item item) {
         this.items.add(item);
         return item;

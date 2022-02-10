@@ -48,19 +48,29 @@ public class Game {
         this.handlers.add(new CommandHandler(this, "move", new String[]{"move", "m", "go", "g"}, "You went 1 step."));
 
         // init all items
-        // ...
+        Item water = new Item("water", "water", "A cold & liquid something you can drink.", "o");
+        Item fire = new Item("fire", "fire", "A burning hot & bright something you can cook with.", "o");
+        Item air = new Item("air", "air", "A fresh & volatile something you can blow things with.", "o");
+        Item earth = new Item("earth", "earth", "A thick & nutritious something you can eat.", "o");
+        Item stone = new Item("stone", "mysterious stone", "A mysterious shinny stone. I wonder what I can do with it...", "o");
 
         // init all locations
         Location start = new Location("start", "center", "The place where everything began.");
         Location north = new Location("n", "north", "It's cold and freezy.");
         Location south = new Location("s", "south", "Oh nice, it's super sunny.");
-        Location west = new Location("w", "west", "Puuh, it's a very windy place.");
+        Location west = new Location("w", "west", "Oh wow, so many corn fields.");
         Location east = new Location("e", "east", "A quite and calm place.");
+
+        // add items to locations
+        north.inventory().addItem(air);
+        south.inventory().addItem(fire);
+        west.inventory().addItem(earth);
+        east.inventory().addItem(water);
 
         // init the player
         Player player = new Player(start);
         // add some items to players inventory
-        // ...
+        player.inventory().addItem(stone);
 
         finished = false;
         xPos = 0;
@@ -79,10 +89,17 @@ public class Game {
     }
 
     /**
+     * Finish the game.
+     */
+    public void finish(){
+        this.finished = true;
+    }
+
+    /**
      * Method that confirms the exit request.
      */
     public void exit() {
-        // show confirmation message
+        // show exit confirmation message
         this.lineInput = this.reader.readLine("Do you really want to quit?\n(Type \"Y\" to confirm.)\n >> ");
         // check if the user inputs "y" or "yes".
         String[] confirms = new String[]{"y","yes"};
@@ -121,14 +138,10 @@ public class Game {
         this.handleCount++;
         this.handleTypes += type + " ";
 
-
-        if(Objects.equals(type, "exit")) {
-            // special case for exit requests
-            this.exit();
-        } else {
-            // else react to user
-            this.printUpdate();
-        }
+        // execute the handler actions
+        currentHandler.handle();
+        // update the terminal
+        this.printUpdate();
     }
 
     /**
@@ -145,6 +158,16 @@ public class Game {
      * @return User input from terminal.
      */
     public String getLineInput() {
-        return lineInput;
+        return this.lineInput;
+    }
+
+    /**
+     * Get the user input.
+     * @param terminalMsg Message the user should see.
+     * @return {@code String} that holds the answer to the given message.
+     */
+    public String getLineInput(String terminalMsg){
+        this.lineInput = this.reader.readLine(terminalMsg);
+        return this.lineInput;
     }
 }

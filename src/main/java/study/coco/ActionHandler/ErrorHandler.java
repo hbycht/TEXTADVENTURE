@@ -18,4 +18,9 @@ public class ErrorHandler extends Handler {
     public boolean matches() {
         return true;
     }
+
+    @Override
+    public void handle() {
+
+    }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Player {
     private Location position;
-//    private Lookable lookAt;
+    // private Lookable lookAt;
     private Inventory inventory;
 
     public Player(Location position) {
@@ -12,13 +12,19 @@ public class Player {
         this.inventory = new Inventory();
     }
 
-    // change item holder from location to player
+    /**
+     * Take the item from location & add to players inventory.
+     * @param item element to be added to the players inventory.
+     */
     public void takeItem(Item item){
         this.inventory.addItem(item);
         this.position.inventory().removeItem(item);
     }
 
-    // change item holder from player to location
+    /**
+     * Drop the item into location & remove it from the inventory of the player.
+     * @param item element to be dropped into current location
+     */
     public void dropItem(Item item){
         this.inventory.removeItem(item);
         this.position.inventory().addItem(item);

@@ -25,6 +25,10 @@ public class Location {
         this.gates[3] = west;
     }
 
+    public Location[] getGates() {
+        return gates;
+    }
+
     public String getId() {
         return id;
     }

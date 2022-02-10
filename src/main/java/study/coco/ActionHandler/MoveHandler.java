@@ -2,6 +2,8 @@ package study.coco.ActionHandler;
 
 import study.coco.Direction;
 import study.coco.Game;
+import study.coco.Location;
+import study.coco.Player;
 
 /**
  * A template to pre-build CommandHandler
@@ -9,19 +11,35 @@ import study.coco.Game;
 public class MoveHandler extends CommandHandler {
 
     private static final String[] phrases = {"north", "south", "east", "west", "n", "s", "e", "w"};
-    private static final String message = "I went one step.\nLet's see what we get here.";
-    private static final String tmpMessage = "I went %s.\nLet's see what we get here.";
+    private static final String defaultMsg = "Let's see what we get here.";
+    private static final String errorMsg = "From here I can't go %s.";
+    private static final String stepMsg = "I went %s.\n";
     private static final String type = "move";
     private Direction direction;
 
     public MoveHandler(Game game) {
-        super(game, type, phrases, message);
+        super(game, type, phrases, defaultMsg);
     }
 
     @Override
     public void handle() {
         super.handle();
-        this.setMessage(String.format(tmpMessage, this.getDirection().asString()));
+
+        // Update input direction
+        this.getDirection();
+
+        // Get player & his location
+        Player player = this.game.player();
+        // Get directed Location
+        Location directedLocation = player.getPosition().getGates()[this.direction.asIndex()];
+
+        if(directedLocation != null){
+            player.setPosition(directedLocation);
+            System.out.println(String.format(stepMsg, this.direction.asString()));
+            this.setMessage(defaultMsg);
+        } else {
+            this.setMessage(String.format(errorMsg, this.direction.asString()));
+        }
     }
 
     private Direction getDirection(){

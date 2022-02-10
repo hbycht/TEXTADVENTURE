@@ -31,6 +31,9 @@ public class Game {
     // there is always a current handler for handling the terminal input
     Handler currentHandler;
 
+    // init player
+    private Player player;
+
     // game state and player position
     private boolean finished;
     private int xPos;
@@ -62,6 +65,14 @@ public class Game {
         Location west = new Location("w", "west", "Oh wow, so many corn fields.");
         Location east = new Location("e", "east", "A quite and calm place.");
 
+        // set up all connections between locations
+        start.setGates(north, east, south, west);
+        north.setGates(null, null, start, null);
+        east.setGates(null, null, null, start);
+        south.setGates(start, null, null, null);
+        west.setGates(null, start, null, null);
+
+
         // add items to locations
         north.inventory().addItem(air);
         south.inventory().addItem(fire);
@@ -69,7 +80,7 @@ public class Game {
         east.inventory().addItem(water);
 
         // init the player
-        Player player = new Player(start);
+        this.player = new Player(start);
         // add some items to players inventory
         player.inventory().addItem(stone);
 
@@ -81,7 +92,9 @@ public class Game {
      *  Basic game logic.
      */
     public void run() {
-        System.out.println(this.getClass().getSimpleName().toLowerCase(Locale.ROOT));
+        System.out.println("TEXT ADVENTURE " + this.getClass().getSimpleName().toUpperCase(Locale.ROOT) + " by Henning Brode © 2022\n");
+
+        printUpdate(false);
 
         // run until game finished
         while (!this.finished) {
@@ -137,8 +150,8 @@ public class Game {
      */
     private void processGameLogic() {
         // for debugging
-        this.handleCount++;
-        this.handleTypes += currentHandler.getType() + " ";
+//        this.handleCount++;
+//        this.handleTypes += currentHandler.getType() + " ";
 
         // execute the handler actions
         currentHandler.handle();
@@ -150,9 +163,33 @@ public class Game {
      * Method to print the reaction to the user.
      */
     private void printUpdate() {
-        System.out.println("[" + this.handleCount + "] " + this.handleTypes);
-        String update = currentHandler.getMessage();
-        System.out.println(update + "\n");
+        // just for debugging
+//        System.out.println("[" + this.handleCount + "] " + this.handleTypes);
+
+        // print Handler message
+        System.out.println(currentHandler.getMessage());
+        // print location description
+        System.out.println(this.player.getPosition().getDescription());
+        // print items the player can see
+        System.out.println("I can see some items:");
+        this.player.getPosition().inventory().getItems().forEach(item -> System.out.print(item.getName() + ", "));
+        System.out.println("");
+    }
+
+    private void printUpdate(boolean withHandler) {
+        // just for debugging
+//        System.out.println("[" + this.handleCount + "] " + this.handleTypes);
+
+        if (withHandler)
+            // print Handler message
+            System.out.println(currentHandler.getMessage());
+
+        // print location description
+        System.out.println(this.player.getPosition().getDescription());
+        // print items the player can see
+        System.out.println("I can see some items:");
+        this.player.getPosition().inventory().getItems().forEach(item -> System.out.print(item.getName() + ", "));
+        System.out.println("");
     }
 
     /**
@@ -171,5 +208,9 @@ public class Game {
     public String getLineInput(String terminalMsg){
         this.lineInput = this.reader.readLine(terminalMsg).trim();
         return this.lineInput;
+    }
+
+    public Player player() {
+        return player;
     }
 }

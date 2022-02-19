@@ -13,7 +13,7 @@ public abstract class Handler {
         this.type = type;
     }
 
-    public abstract boolean matches();
+    public abstract boolean matches(String command);
 
     public abstract void handle();
 

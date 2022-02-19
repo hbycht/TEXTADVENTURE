@@ -27,10 +27,9 @@ public class CommandHandler extends Handler {
     }
 
     @Override
-    public boolean matches() {
-        this.command = this.game.getLineInput();
+    public boolean matches(String command) {
         for (String phrase : this.getPhrases()) {
-            if (phrase.equalsIgnoreCase(this.command))
+            if (phrase.equalsIgnoreCase(command))
                 return true;
         }
         return false;

@@ -21,6 +21,7 @@ public class Game {
 
     // storing the current terminal input
     private String lineInput;
+    private String[] commandParts;
 
     // list of available input handlers
     private ArrayList<Handler> handlers = new ArrayList<>();
@@ -47,6 +48,7 @@ public class Game {
         // init & add all necessary game handlers to the handler list
         this.handlers.add(new ExitHandler(this));
         this.handlers.add(new MoveHandler(this));
+        this.handlers.add(new TakeHandler(this));
 
         // init all items
         Item water = new Item("water", "water", "A cold & liquid something you can drink.", "o");
@@ -113,9 +115,12 @@ public class Game {
         // ask for and store the given input
         this.lineInput = this.reader.readLine(" >> ").trim();
 
+        // parse command into parts
+        this.commandParts = this.lineInput.split(" ");
+
         // check if user input matches a valid command for a handler
         for (Handler handler : this.handlers) {
-            if (handler.matches()) {
+            if (handler.matches(this.getInputCommand())) {
                 // if it's a match return this handler
                 return handler;
             }
@@ -155,21 +160,37 @@ public class Game {
     }
 
     /**
-     * Get the user input.
-     * @return User input from terminal.
+     * Get the full user input.
+     * @return Full user input from terminal.
      */
     public String getLineInput(){
         return this.lineInput;
     }
 
     /**
-     * Get the user input.
+     * Get the full user answer to the given terminal message.
      * @param terminalMsg Message the user should see.
-     * @return {@code String} that holds the answer to the given message.
+     * @return Full {@code String} that holds the answer to the given message.
      */
     public String getLineInput(String terminalMsg){
         this.lineInput = this.reader.readLine(terminalMsg).trim();
         return this.lineInput;
+    }
+
+    /**
+     * Get only the command part of the user input.
+     * @return {@code String} that holds the actual command from the user input.
+     */
+    public String getInputCommand(){
+        return this.commandParts[0];
+    }
+
+    /**
+     * Get only the command part of the user input.
+     * @return {@code String} that holds the actual command from the user input.
+     */
+    public String getInputObject(){
+        return this.commandParts[1];
     }
 
     /**

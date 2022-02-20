@@ -6,19 +6,19 @@ import study.coco.Location;
 import study.coco.Player;
 
 /**
- * A template to pre-build CommandHandler
+ * This Handler reacts to move commands.
  */
 public class MoveHandler extends CommandHandler {
 
-    private static final String[] phrases = {"north", "south", "east", "west", "n", "s", "e", "w"};
-    private static final String LetsSeeMsg = "Let's see what we get here...\n";
-    private static final String errorMsg = "From here we can't go %s.";
-    private static final String stepMsg = "We went %s.\n";
+    private static final String[] commands = {"north", "south", "east", "west", "n", "s", "e", "w"};
+    private static final String LetsSeeMsg = "Let's see what I get here...\n\n";
+    private static final String errorMsg = "From here I can't go %s.";
+    private static final String stepMsg = "I went %s.\n";
     private static final String type = "move";
     private Direction direction;
 
     public MoveHandler(Game game) {
-        super(game, type, phrases, LetsSeeMsg);
+        super(game, type, commands, LetsSeeMsg);
     }
 
     @Override

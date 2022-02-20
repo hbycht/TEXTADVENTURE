@@ -23,6 +23,10 @@ public class Game {
     private String lineInput;
     private String[] commandParts;
 
+    // some message presets
+    private String inputCall = " >> ";
+    private String inputMsg = "\nWhat should I do next?";
+
     // list of available input handlers
     private ArrayList<Handler> handlers = new ArrayList<>();
 
@@ -49,6 +53,7 @@ public class Game {
         this.handlers.add(new ExitHandler(this));
         this.handlers.add(new MoveHandler(this));
         this.handlers.add(new TakeHandler(this));
+        this.handlers.add(new DropHandler(this));
 
         // init all items
         Item water = new Item("water", "water", "A cold & liquid something you can drink.", "o");
@@ -97,7 +102,7 @@ public class Game {
 
         // first terminal outputs as overview
         System.out.println(this.player.getPosition().getFullDescription());
-        System.out.println("What do you want to do?");
+        System.out.println(inputMsg);
 
         // run until game finished
         while (!this.finished) {
@@ -113,7 +118,7 @@ public class Game {
      */
     private Handler getCurrentHandler() {
         // ask for and store the given input
-        this.lineInput = this.reader.readLine(" >> ").trim();
+        this.lineInput = this.reader.readLine(inputCall).trim();
 
         // parse command into parts
         this.commandParts = this.lineInput.split(" ");
@@ -144,8 +149,8 @@ public class Game {
         this.printHandlerMessage();
 
         // ask for next input
-        if(currentHandler.getType() != "error")
-            System.out.println("\nWhat do you want to do?");
+        if(currentHandler.getType() != "error" && currentHandler.getType() != "exit") // but don't ask for an ERROR or EXIT command
+            System.out.println(inputMsg);
     }
 
     /**

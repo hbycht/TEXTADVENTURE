@@ -2,7 +2,9 @@ package study.coco.ActionHandler;
 
 import study.coco.Game;
 
-
+/**
+ * This Handler reacts if the player types an unknown command.
+ */
 public class ErrorHandler extends Handler {
 
     public ErrorHandler(Game game) {

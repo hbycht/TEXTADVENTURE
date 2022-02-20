@@ -2,33 +2,23 @@ package study.coco.ActionHandler;
 
 import study.coco.Game;
 
-import java.util.ArrayList;
-
 /**
  * With the CommandHandler you can build every Handler which listens to a command on-the-fly.
  * Just give it some phrases and a reply message.
  */
 public class CommandHandler extends Handler {
 
-    protected String command;
-    protected String[] phrases;
+    private final String[] commands;
 
-
-    public CommandHandler(Game game, String type) {
+    public CommandHandler(Game game, String type, String[] commands, String message) {
         super(game, type);
-        this.phrases = new String[]{""};
-        this.message = "Default output of CommandHandler. You can overwrite it.";
-    }
-
-    public CommandHandler(Game game, String type, String[] phrases, String message) {
-        super(game, type);
-        this.phrases = phrases;
+        this.commands = commands;
         this.message = message;
     }
 
     @Override
     public boolean matches(String command) {
-        for (String phrase : this.getPhrases()) {
+        for (String phrase : this.getCommands()) {
             if (phrase.equalsIgnoreCase(command))
                 return true;
         }
@@ -40,8 +30,8 @@ public class CommandHandler extends Handler {
 
     }
 
-    protected String[] getPhrases() {
-        return this.phrases;
+    protected String[] getCommands() {
+        return this.commands;
     }
 
 }

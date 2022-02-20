@@ -10,6 +10,9 @@ public class Location {
     private Location[] gates;
     private Inventory inventory;
 
+    private String locationNameMsg = "I'm now %s %s.";
+    private String itemOverviewMsg = "I can see %d item%s:";
+
     public Location(String id, String name, String preposition, String description) {
         this.id = id;
         this.name = name;
@@ -38,6 +41,10 @@ public class Location {
         return name;
     }
 
+    public String getPreposition() {
+        return preposition;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -45,7 +52,7 @@ public class Location {
     public String getFullDescription(){
         return
                 // Location name
-                "We are now " + this.preposition + " " + this.name.toUpperCase() + ". " +
+                String.format(locationNameMsg, this.getPreposition(), this.getName().toUpperCase()) + "\n" +
                 // Location description
                 this.description + "\n" +
                 // List of items in location
@@ -59,8 +66,10 @@ public class Location {
 
         if(items.size() > 0){
             // return items the player can see
-            returnString += "We can see " + items.size() + " item" + (items.size() != 1 ? "s" : "") + ":\n";
+            returnString += String.format(itemOverviewMsg, items.size(), items.size() != 1 ? "s" : "") + "\n";
             returnString += this.inventory().listItems();
+        } else {
+            return "I can't see any items.";
         }
         return returnString;
     }

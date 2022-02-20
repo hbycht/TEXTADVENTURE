@@ -12,6 +12,7 @@ public class Location {
 
     private String locationNameMsg = "I'm now %s %s.";
     private String itemOverviewMsg = "I can see %d item%s:";
+    private String noItemsMsg = "I can't see any items.";
 
     public Location(String id, String name, String preposition, String description) {
         this.id = id;
@@ -60,18 +61,20 @@ public class Location {
     }
 
     public String getItemOverview() {
-        String returnString = "";
+        Inventory inv = this.inventory();
 
-        ArrayList<Item> items = this.inventory().getItems();
-
-        if(items.size() > 0){
+        if(inv.itemCount() > 0){
+            String returnString = "";
+            
             // return items the player can see
-            returnString += String.format(itemOverviewMsg, items.size(), items.size() != 1 ? "s" : "") + "\n";
+            returnString += String.format(itemOverviewMsg, inv.itemCount(), inv.itemCount() != 1 ? "s" : "") + "\n";
             returnString += this.inventory().listItems();
-        } else {
-            return "I can't see any items.";
+            
+            return returnString;
+        } 
+        else {
+            return noItemsMsg;
         }
-        return returnString;
     }
 
     public Inventory inventory() {

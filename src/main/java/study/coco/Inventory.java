@@ -31,17 +31,15 @@ public class Inventory {
 
     // show all item descriptions
     public String listItems() {
-        int itemCount = this.items.size();
-
         String names = "";
 
         // if there are items
-        if(itemCount > 0){
-            for (int i = 0; i < itemCount; i++){
+        if(this.itemCount() > 0){
+            for (int i = 0; i < this.itemCount(); i++){
                 names += this.items.get(i).getName();
-                if(i < itemCount - 2)
+                if(i < this.itemCount() - 2)
                     names += ", "; // add a comma to every item BUT the last
-                else if(i < itemCount - 1)
+                else if(i < this.itemCount() - 1)
                     names += " & "; // add a '&' to every item BUT the last
             }
         }
@@ -50,5 +48,9 @@ public class Inventory {
 
     public ArrayList<Item> getItems() {
         return items;
+    }
+    
+    public int itemCount() {
+        return this.items.size();
     }
 }

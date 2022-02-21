@@ -11,6 +11,7 @@ public class MoveHandler extends CommandHandler {
     private static final String LetsSeeMsg = "Let's see what I get here...\n\n";
     private static final String errorMsg = "From here I can't go %s.";
     private static final String stepMsg = "I went %s.\n";
+    private static final String closedGateMsg = "The %s is closed. Is here a key somewhere?";
     private static final String type = "move";
     private Direction direction;
 
@@ -34,11 +35,22 @@ public class MoveHandler extends CommandHandler {
 
         // CHECK IF DIRECTION EXISTS
         if(directedGate != null){
-            // CHANGE LOCATION
-            player.setPosition(directedGate.getLocationBehind(player.getPosition()));
-            message += String.format(stepMsg, this.direction.asString());
-            message += LetsSeeMsg;
-            message += player.getPosition().getFullDescription();
+            // CHECK IF THE GATE IS PASSABLE
+            if(directedGate.isOpen()){
+                // CHANGE LOCATION
+                player.setPosition(directedGate.getLocationBehind(player.getPosition()));
+                player.setActualGate(null);
+                message += String.format(stepMsg, this.direction.asString());
+                message += LetsSeeMsg;
+                message += player.getPosition().getFullDescription();
+            }
+            else {
+                // PRINT MESSAGE THAT THE PLAYER CAN'T PASS THE CLOSED GATE
+                this.game.player().setActualGate(directedGate);
+                message += String.format(stepMsg, this.direction.asString());
+                message += String.format(closedGateMsg, directedGate.getName());
+            }
+
         }
         // CAN'T CHANGE LOCATION
         else {

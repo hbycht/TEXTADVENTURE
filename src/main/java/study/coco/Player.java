@@ -34,6 +34,10 @@ public class Player {
         this.position = position;
     }
 
+    public void setActualGate(Gate actualGate) {
+        this.actualGate = actualGate;
+    }
+
     public Location getPosition() {
         return position;
     }

@@ -11,7 +11,7 @@ public class Gate extends Describable{
 //        this.endings[0] = ending1;
 //        this.endings[1] = ending2;
         this.key = key;
-        this.isOpen = true;
+        this.isOpen = false;
     }
 
     public void setEnding(Location ending) {

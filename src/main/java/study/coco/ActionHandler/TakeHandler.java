@@ -31,9 +31,14 @@ public class TakeHandler extends CommandHandler {
         }
     }
 
-    private Item checkForItem(String object){
+    /**
+     * Returns the Item with the given item name if it exists.
+     * @param itemName The name of the Item.
+     * @return {@code Item} that has the given item name.
+     */
+    private Item checkForItem(String itemName){
         for (Item item : this.game.player().getPosition().inventory().getItems()) {
-            if (item.getName().equalsIgnoreCase(object))
+            if (item.getName().equalsIgnoreCase(itemName))
                 return item;
         }
         return null;

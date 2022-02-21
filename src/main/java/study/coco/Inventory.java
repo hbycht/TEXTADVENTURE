@@ -19,16 +19,6 @@ public class Inventory {
         this.items.remove(item);
     }
 
-    // remove item by item id
-    public void removeItem(String id) {
-        for(Item item : this.items){
-            if(item.getId().equals(id)){
-                this.items.remove(item);
-                return;
-            }
-        }
-    }
-
     // show all item descriptions
     public String listItems() {
         String names = "";

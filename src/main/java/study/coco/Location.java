@@ -2,23 +2,18 @@ package study.coco;
 
 import java.util.ArrayList;
 
-public class Location {
-    private final String id;
-    private final String name;
+public class Location extends Describable{
     private final String preposition;
-    private final String description;
     private Location[] gates;
     private Inventory inventory;
 
-    private String locationNameMsg = "I'm now %s %s.";
+    private final String locationNameMsg = "I'm now %s %s.";
     private String itemOverviewMsg = "I can see %d item%s:";
     private String noItemsMsg = "I can't see any items.";
 
-    public Location(String id, String name, String preposition, String description) {
-        this.id = id;
-        this.name = name;
+    public Location(String name, String preposition, String description) {
+        super(name, description);
         this.preposition = preposition;
-        this.description = description;
         this.gates = new Location[4];
         this.inventory = new Inventory();
     }
@@ -33,21 +28,8 @@ public class Location {
     public Location[] getGates() {
         return gates;
     }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
     public String getPreposition() {
         return preposition;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public String getFullDescription(){
@@ -55,7 +37,7 @@ public class Location {
                 // Location name
                 String.format(locationNameMsg, this.getPreposition(), this.getName().toUpperCase()) + "\n" +
                 // Location description
-                this.description + "\n" +
+                this.getDescription() + "\n" +
                 // List of items in location
                 this.getItemOverview();
     }

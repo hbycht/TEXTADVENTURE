@@ -57,18 +57,18 @@ public class Game {
         this.handlers.add(new InventoryHandler(this));
 
         // init all items
-        Item water = new Item("water", "water", "A cold & liquid something you can drink.", "o");
-        Item fire = new Item("fire", "fire", "A burning hot & bright something you can cook with.", "o");
-        Item air = new Item("air", "air", "A fresh & volatile something you can blow things with.", "o");
-        Item earth = new Item("earth", "earth", "A thick & nutritious something you can eat.", "o");
-        Item stone = new Item("stone", "mysterious stone", "A mysterious shinny stone. I wonder what I can do with it...", "o");
+        Item water = new Item("water", "A cold & liquid something you can drink.", "o");
+        Item fire = new Item("fire", "A burning hot & bright something you can cook with.", "o");
+        Item air = new Item("air", "A fresh & volatile something you can blow things with.", "o");
+        Item earth = new Item("earth", "A thick & nutritious something you can eat.", "o");
+        Item stone = new Item("mysterious stone", "A mysterious shinny stone. I wonder what I can do with it...", "o");
 
         // init all locations
-        Location start = new Location("start", "center", "in the", "The place where everything began.");
-        Location north = new Location("n", "north", "in the", "It's cold and freezy.");
-        Location south = new Location("s", "south", "in the", "Oh nice, it's super sunny.");
-        Location west = new Location("w", "west", "in the", "Oh wow, so many corn fields.");
-        Location east = new Location("e", "east", "in the", "A quite and calm place.");
+        Location start = new Location("center", "in the", "The place where everything began.");
+        Location north = new Location("north", "in the", "It's cold and freezy.");
+        Location south = new Location("south", "in the", "Oh nice, it's super sunny.");
+        Location west = new Location("west", "in the", "Oh wow, so many corn fields.");
+        Location east = new Location("east", "in the", "A quite and calm place.");
 
         // set up all connections between locations
         start.setGates(north, east, south, west);
@@ -122,7 +122,7 @@ public class Game {
         this.lineInput = this.reader.readLine(inputCall).trim();
 
         // parse command into parts
-        this.commandParts = this.lineInput.split(" ");
+        this.commandParts = this.lineInput.split(" ", 2);
 
         // check if user input matches a valid command for a handler
         for (Handler handler : this.handlers) {
@@ -192,7 +192,7 @@ public class Game {
     }
 
     /**
-     * Get only the command part of the user input.
+     * Get only the command part of the user input as combined {@code String}.
      * @return {@code String} that holds the actual command from the user input.
      */
     public String getInputObject(){

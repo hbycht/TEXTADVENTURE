@@ -71,10 +71,10 @@ public class Game {
         Location east = new Location("east", "in the", "A quite and calm place.");
 
         // init all gates
-        Gate gC_N = new Gate(start, north, "gate to north", "A sky gate with a small sign on it that says \"North\".", earth);
-        Gate gC_S = new Gate(start, south, "gate to south", "A sky gate with a small sign on it that says \"South\".", water);
-        Gate gC_W = new Gate(start, west, "gate to west", "A sky gate with a small sign on it that says \"West\".", air);
-        Gate gC_E = new Gate(start, east, "gate to east", "A sky gate with a small sign on it that says \"East\".", fire);
+        Gate gC_N = new Gate("gate to north", "A sky gate with a small sign on it that says \"North\".", earth);
+        Gate gC_S = new Gate("gate to south", "A sky gate with a small sign on it that says \"South\".", water);
+        Gate gC_W = new Gate("gate to west", "A sky gate with a small sign on it that says \"West\".", air);
+        Gate gC_E = new Gate("gate to east", "A sky gate with a small sign on it that says \"East\".", fire);
 
         // set up all connections between locations
         start.setGates(gC_N, gC_E, gC_S, gC_W);

@@ -21,6 +21,16 @@ public class Location extends Describable{
         this.gates[1] = east;
         this.gates[2] = south;
         this.gates[3] = west;
+
+        // automatically set gate endings
+        if(north != null)
+            north.setEnding(this);
+        if(south != null)
+            south.setEnding(this);
+        if(east != null)
+            east.setEnding(this);
+        if(west != null)
+            west.setEnding(this);
     }
 
     public Gate[] getGates() {

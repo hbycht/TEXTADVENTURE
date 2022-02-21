@@ -5,11 +5,11 @@ public class Gate extends Describable{
     private Item key;
     private boolean isOpen;
 
-    public Gate(Location ending1, Location ending2, String name, String description, Item key) {
+    public Gate(String name, String description, Item key) {
         super(name, description);
         this.endings = new Location[2];
-        this.endings[0] = ending1;
-        this.endings[1] = ending2;
+//        this.endings[0] = ending1;
+//        this.endings[1] = ending2;
         this.key = key;
         this.isOpen = true;
     }
@@ -17,8 +17,8 @@ public class Gate extends Describable{
     public void setEnding(Location ending) {
         if(this.endings[0] == null)
             this.endings[0] = ending;
-        else if(this.endings[1] == null)
-            this.endings[0] = ending;
+        else
+            this.endings[1] = ending;
     }
 
     public void open() {

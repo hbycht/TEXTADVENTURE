@@ -1,9 +1,6 @@
 package study.coco.ActionHandler;
 
-import study.coco.Direction;
-import study.coco.Game;
-import study.coco.Location;
-import study.coco.Player;
+import study.coco.*;
 
 /**
  * This Handler reacts to move commands.
@@ -31,17 +28,17 @@ public class MoveHandler extends CommandHandler {
         // Update input direction
         this.getDirection();
 
-        // Get player & his location
+        // Get player & his directed location
         Player player = this.game.player();
-        // Get directed Location
-        Location directedLocation = player.getPosition().getGates()[this.direction.asIndex()];
+        Gate directedGate = player.getPosition().getGates()[this.direction.asIndex()];
 
-        // CHANGE LOCATION
-        if(directedLocation != null){
-            player.setPosition(directedLocation);
+        // CHECK IF DIRECTION EXISTS
+        if(directedGate != null){
+            // CHANGE LOCATION
+            player.setPosition(directedGate.getLocationBehind(player.getPosition()));
             message += String.format(stepMsg, this.direction.asString());
             message += LetsSeeMsg;
-            message += directedLocation.getFullDescription();
+            message += player.getPosition().getFullDescription();
         }
         // CAN'T CHANGE LOCATION
         else {

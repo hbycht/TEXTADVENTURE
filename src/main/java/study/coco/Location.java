@@ -1,10 +1,8 @@
 package study.coco;
 
-import java.util.ArrayList;
-
 public class Location extends Describable{
     private final String preposition;
-    private Location[] gates;
+    private Gate[] gates;
     private Inventory inventory;
 
     private final String locationNameMsg = "I'm now %s %s.";
@@ -14,18 +12,18 @@ public class Location extends Describable{
     public Location(String name, String preposition, String description) {
         super(name, description);
         this.preposition = preposition;
-        this.gates = new Location[4];
+        this.gates = new Gate[4];
         this.inventory = new Inventory();
     }
 
-    public void setGates(Location north, Location east, Location south, Location west) {
+    public void setGates(Gate north, Gate east, Gate south, Gate west) {
         this.gates[0] = north;
         this.gates[1] = east;
         this.gates[2] = south;
         this.gates[3] = west;
     }
 
-    public Location[] getGates() {
+    public Gate[] getGates() {
         return gates;
     }
     public String getPreposition() {

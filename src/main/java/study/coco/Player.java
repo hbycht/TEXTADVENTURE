@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Player {
     private Location position;
-    // private Lookable lookAt;
+    private Gate actualGate;
     private Inventory inventory;
 
     public Player(Location position) {

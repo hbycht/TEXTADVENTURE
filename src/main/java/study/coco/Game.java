@@ -70,12 +70,18 @@ public class Game {
         Location west = new Location("west", "in the", "Oh wow, so many corn fields.");
         Location east = new Location("east", "in the", "A quite and calm place.");
 
+        // init all gates
+        Gate gC_N = new Gate(start, north, "gate to north", "A sky gate with a small sign on it that says \"North\".", earth);
+        Gate gC_S = new Gate(start, south, "gate to south", "A sky gate with a small sign on it that says \"South\".", water);
+        Gate gC_W = new Gate(start, west, "gate to west", "A sky gate with a small sign on it that says \"West\".", air);
+        Gate gC_E = new Gate(start, east, "gate to east", "A sky gate with a small sign on it that says \"East\".", fire);
+
         // set up all connections between locations
-        start.setGates(north, east, south, west);
-        north.setGates(null, null, start, null);
-        east.setGates(null, null, null, start);
-        south.setGates(start, null, null, null);
-        west.setGates(null, start, null, null);
+        start.setGates(gC_N, gC_E, gC_S, gC_W);
+        north.setGates(null, null, gC_N, null);
+        east.setGates(null, null, null, gC_E);
+        south.setGates(gC_S, null, null, null);
+        west.setGates(null, gC_W, null, null);
 
 
         // add items to locations

@@ -1,7 +1,8 @@
-package study.coco.ActionHandler;
+package study.coco.Game.Handler.CommandHandler.ItemHandler;
 
-import study.coco.Game;
-import study.coco.Item;
+import study.coco.Game.Game;
+import study.coco.Game.Handler.CommandHandler.CommandHandler;
+import study.coco.Game.Describable.Item;
 
 /**
  * This Handler can do something with items.

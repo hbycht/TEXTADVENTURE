@@ -1,6 +1,6 @@
-package study.coco;
+package study.coco.Game.Describable;
 
-public class Gate extends Describable{
+public class Gate extends Describable {
     private Location[] endings;
     private Item key;
     private boolean isOpen;

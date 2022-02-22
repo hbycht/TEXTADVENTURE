@@ -1,6 +1,8 @@
-package study.coco;
+package study.coco.Game.Describable;
 
-public class Location extends Describable{
+import study.coco.Game.Inventory;
+
+public class Location extends Describable {
     private final String preposition;
     private Gate[] gates;
     private Inventory inventory;

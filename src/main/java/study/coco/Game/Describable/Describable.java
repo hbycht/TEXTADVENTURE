@@ -1,4 +1,4 @@
-package study.coco;
+package study.coco.Game.Describable;
 
 public abstract class Describable {
     private final String name;

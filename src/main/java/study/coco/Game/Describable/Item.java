@@ -1,4 +1,4 @@
-package study.coco;
+package study.coco.Game.Describable;
 
 public class Item extends Describable{
     private final String type;

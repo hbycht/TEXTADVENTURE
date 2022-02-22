@@ -1,6 +1,6 @@
-package study.coco.ActionHandler;
+package study.coco.Game.Handler;
 
-import study.coco.Game;
+import study.coco.Game.Game;
 
 /**
  * This Handler reacts if the player types an unknown command.

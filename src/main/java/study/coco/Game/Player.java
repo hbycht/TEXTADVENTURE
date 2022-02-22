@@ -1,6 +1,8 @@
-package study.coco;
+package study.coco.Game;
 
-import java.util.ArrayList;
+import study.coco.Game.Describable.Gate;
+import study.coco.Game.Describable.Item;
+import study.coco.Game.Describable.Location;
 
 public class Player {
     private Location position;

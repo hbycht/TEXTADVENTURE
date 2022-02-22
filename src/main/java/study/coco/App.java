@@ -1,8 +1,9 @@
 package study.coco;
 
 
+import study.coco.Game.Game;
+
 import java.io.IOException;
-import java.util.Arrays;
 
 public class App {
 

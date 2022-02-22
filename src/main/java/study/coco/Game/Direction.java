@@ -1,4 +1,4 @@
-package study.coco;
+package study.coco.Game;
 
 import java.util.Locale;
 

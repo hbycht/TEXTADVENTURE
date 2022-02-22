@@ -1,9 +1,9 @@
-package study.coco.ActionHandler;
+package study.coco.Game.Handler.CommandHandler.ItemHandler;
 
-import study.coco.Game;
-import study.coco.Gate;
-import study.coco.Item;
-import study.coco.Location;
+import study.coco.Game.Game;
+import study.coco.Game.Describable.Gate;
+import study.coco.Game.Describable.Item;
+import study.coco.Game.Describable.Location;
 
 /**
  * This Handler reacts to use commands.

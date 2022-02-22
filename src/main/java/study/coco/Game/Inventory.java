@@ -1,4 +1,6 @@
-package study.coco;
+package study.coco.Game;
+
+import study.coco.Game.Describable.Item;
 
 import java.util.ArrayList;
 

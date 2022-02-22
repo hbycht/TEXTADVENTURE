@@ -1,7 +1,7 @@
-package study.coco.ActionHandler;
+package study.coco.Game.Handler.CommandHandler;
 
-import study.coco.Game;
-import study.coco.Inventory;
+import study.coco.Game.Game;
+import study.coco.Game.Inventory;
 
 /**
  * This Handler reacts to inventory commands.
@@ -9,7 +9,7 @@ import study.coco.Inventory;
 public class InventoryHandler extends CommandHandler {
 
     private static final String[] commands = {"i", "inv", "inventory"};
-    private static final String type = "default";
+    private static final String type = "inventory";
 
     private static final String inventoryMsg = "My INVENTORY [%d item%s]:\n%s";
     private String noItemsMsg = "My INVENTORY is empty!";

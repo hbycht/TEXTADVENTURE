@@ -1,6 +1,9 @@
-package study.coco.ActionHandler;
+package study.coco.Game.Handler.CommandHandler;
 
-import study.coco.*;
+import study.coco.Game.Direction;
+import study.coco.Game.Game;
+import study.coco.Game.Describable.Gate;
+import study.coco.Game.Player;
 
 /**
  * This Handler reacts to move commands.

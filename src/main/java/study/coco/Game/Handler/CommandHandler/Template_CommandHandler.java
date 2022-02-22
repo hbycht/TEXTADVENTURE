@@ -1,6 +1,6 @@
-package study.coco.ActionHandler;
+package study.coco.Game.Handler.CommandHandler;
 
-import study.coco.Game;
+import study.coco.Game.Game;
 
 /**
  * This Handler reacts to ____ commands.

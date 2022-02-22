@@ -1,6 +1,7 @@
-package study.coco.ActionHandler;
+package study.coco.Game.Handler.CommandHandler;
 
-import study.coco.Game;
+import study.coco.Game.Game;
+import study.coco.Game.Handler.Handler;
 
 /**
  * With the CommandHandler you can build every Handler which listens to a command on-the-fly.

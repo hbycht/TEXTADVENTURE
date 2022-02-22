@@ -1,11 +1,19 @@
-package study.coco;
+package study.coco.Game;
 
 import org.jline.reader.LineReader;
 import org.jline.reader.LineReaderBuilder;
 import org.jline.reader.impl.history.DefaultHistory;
 import org.jline.terminal.Terminal;
 import org.jline.terminal.TerminalBuilder;
-import study.coco.ActionHandler.*;
+import study.coco.Game.Describable.Gate;
+import study.coco.Game.Describable.Item;
+import study.coco.Game.Describable.Location;
+import study.coco.Game.Handler.*;
+import study.coco.Game.Handler.CommandHandler.*;
+import study.coco.Game.Handler.CommandHandler.ItemHandler.DropHandler;
+import study.coco.Game.Handler.CommandHandler.ItemHandler.UseHandler;
+import study.coco.Game.Handler.CommandHandler.MoveHandler;
+import study.coco.Game.Handler.CommandHandler.ItemHandler.TakeHandler;
 
 import java.io.IOException;
 import java.util.ArrayList;

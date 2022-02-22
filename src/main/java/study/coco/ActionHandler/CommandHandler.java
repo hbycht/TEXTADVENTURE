@@ -6,7 +6,7 @@ import study.coco.Game;
  * With the CommandHandler you can build every Handler which listens to a command on-the-fly.
  * Just give it some phrases and a reply message.
  */
-public class CommandHandler extends Handler {
+public abstract class CommandHandler extends Handler {
 
     private final String[] commands;
 
@@ -19,6 +19,7 @@ public class CommandHandler extends Handler {
     @Override
     public boolean matches(String command) {
         for (String phrase : this.getCommands()) {
+            // IF THE INPUT COMMAND MATCHES THE HANDLER COMMAND
             if (phrase.equalsIgnoreCase(command))
                 return true;
         }

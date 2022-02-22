@@ -54,6 +54,7 @@ public class Game {
         this.handlers.add(new MoveHandler(this));
         this.handlers.add(new TakeHandler(this));
         this.handlers.add(new DropHandler(this));
+        this.handlers.add(new UseHandler(this));
         this.handlers.add(new InventoryHandler(this));
 
         // init all items
@@ -73,10 +74,11 @@ public class Game {
         // init all gates
         Gate gC_N = new Gate("gate to north", "A sky gate with a small sign on it that says \"North\".", earth);
         Gate gC_S = new Gate("gate to south", "A sky gate with a small sign on it that says \"South\".", water);
-        Gate gC_W = new Gate("gate to west", "A sky gate with a small sign on it that says \"West\".", air);
-        Gate gC_E = new Gate("gate to east", "A sky gate with a small sign on it that says \"East\".", fire);
+        Gate gC_W = new Gate("gate to west", "A sky gate with a small sign on it that says \"West\".");
+        Gate gC_E = new Gate("gate to east", "A sky gate with a small sign on it that says \"East\".");
 
         // set up all connections between locations
+        // every gate should appear twice, so the assignment automation for the gate endings will work correctly.
         start.setGates(gC_N, gC_E, gC_S, gC_W);
         north.setGates(null, null, gC_N, null);
         east.setGates(null, null, null, gC_E);
@@ -155,6 +157,9 @@ public class Game {
         // update the terminal
         this.printHandlerMessage();
 
+        // debug
+        System.out.println("actual Gate: " + (this.player().getActualGate() != null ? this.player().getActualGate().getName() : "no gate selected"));
+
         // ask for next input
         if(currentHandler.getType() != "error" && currentHandler.getType() != "exit") // but don't ask for an ERROR or EXIT command
             System.out.println(inputMsg);
@@ -202,7 +207,10 @@ public class Game {
      * @return {@code String} that holds the actual command from the user input.
      */
     public String getInputObject(){
-        return this.commandParts[1];
+        if(this.commandParts.length > 1)
+            return this.commandParts[1];
+        else
+            return "";
     }
 
     /**

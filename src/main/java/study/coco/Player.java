@@ -42,6 +42,10 @@ public class Player {
         return position;
     }
 
+    public Gate getActualGate() {
+        return actualGate;
+    }
+
     public Inventory inventory() {
         return inventory;
     }

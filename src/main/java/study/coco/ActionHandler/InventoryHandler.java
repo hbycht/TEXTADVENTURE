@@ -9,13 +9,13 @@ import study.coco.Inventory;
 public class InventoryHandler extends CommandHandler {
 
     private static final String[] commands = {"i", "inv", "inventory"};
-    private static final String message = "";
-    private static final String inventoryMsg = "INVENTORY [%d item%s]:\n%s";
-    private String noItemsMsg = "I haven't any items in my inventory.";
     private static final String type = "default";
 
+    private static final String inventoryMsg = "My INVENTORY [%d item%s]:\n%s";
+    private String noItemsMsg = "My INVENTORY is empty!";
+
     public InventoryHandler(Game game) {
-        super(game, type, commands, message);
+        super(game, type, commands, "");
     }
 
     @Override
@@ -24,6 +24,10 @@ public class InventoryHandler extends CommandHandler {
 
         Inventory inv = this.game.player().inventory();
 
-        this.setMessage(String.format(inventoryMsg, inv.itemCount(), inv.itemCount() != 1 ? "s" : "", inv.listItems()));
+        // IF THERE ARE ITEMS IN THE INVENTORY
+        if(inv.itemCount() > 0)
+            this.setMessage(String.format(inventoryMsg, inv.itemCount(), inv.itemCount() != 1 ? "s" : "", inv.listItems()));
+        else
+            this.setMessage(noItemsMsg);
     }
 }

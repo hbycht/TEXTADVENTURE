@@ -8,12 +8,14 @@ import study.coco.*;
 public class MoveHandler extends CommandHandler {
 
     private static final String[] commands = {"north", "south", "east", "west", "n", "s", "e", "w"};
+    private static final String type = "move";
+    private Direction direction;
+
     private static final String LetsSeeMsg = "Let's see what I get here...\n\n";
     private static final String errorMsg = "From here I can't go %s.";
     private static final String stepMsg = "I went %s.\n";
+    private static final String tryStepMsg = "I tried to go %s...\n";
     private static final String closedGateMsg = "The %s is closed. Is here a key somewhere?";
-    private static final String type = "move";
-    private Direction direction;
 
     public MoveHandler(Game game) {
         super(game, type, commands, LetsSeeMsg);
@@ -47,7 +49,7 @@ public class MoveHandler extends CommandHandler {
             else {
                 // PRINT MESSAGE THAT THE PLAYER CAN'T PASS THE CLOSED GATE
                 this.game.player().setActualGate(directedGate);
-                message += String.format(stepMsg, this.direction.asString());
+                message += String.format(tryStepMsg, this.direction.asString());
                 message += String.format(closedGateMsg, directedGate.getName());
             }
 

@@ -68,7 +68,7 @@ public class LookHandler extends CommandHandler {
 
         // LOOK FOR GATE IN LOCATION by gate name
         for (Gate gate : gates) {
-            if (gate.getName().equalsIgnoreCase(name)){
+            if (gate != null && gate.getName().equalsIgnoreCase(name)){
                 player.setActualGate(gate); // Set the actual gate so the player can USE an item as key on it.
                 return gate;
             }

@@ -57,7 +57,7 @@ public class Location extends Describable {
                 this.getItemOverview();
     }
 
-    private String getDirectionOverview() {
+    public String getDirectionOverview() {
         String dirOverview = "";
 
         for(int i = 0; i < this.gates.length; i++){

@@ -15,7 +15,7 @@ public class MoveHandler extends CommandHandler {
     private Direction direction;
 
     private static final String LetsSeeMsg = "Let's see what I get here...\n\n";
-    private static final String errorMsg = "From here I can't go %s.";
+    private static final String errorMsg = "From here I can't go %s.\nAvailable directions:\n%s";
     private static final String stepMsg = "I went %s.\n";
     private static final String tryStepMsg = "I tried to go %s...\n";
     private static final String closedGateMsg = "The %s is closed. Is here a key somewhere?";
@@ -59,7 +59,7 @@ public class MoveHandler extends CommandHandler {
         }
         // CAN'T CHANGE LOCATION
         else {
-            message = String.format(errorMsg, this.direction.asString());
+            message = String.format(errorMsg, this.direction.asString(), player.getPosition().getDirectionOverview());
         }
 
         this.setMessage(message);

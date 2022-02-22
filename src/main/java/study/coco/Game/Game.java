@@ -67,11 +67,11 @@ public class Game {
         this.handlers.add(new LookHandler(this));
 
         // init all items
-        Item water = new Item("water", "A cold & liquid something you can drink.", "o");
-        Item fire = new Item("fire", "A burning hot & bright something you can cook with.", "o");
-        Item air = new Item("air", "A fresh & volatile something you can blow things with.", "o");
-        Item earth = new Item("earth", "A thick & nutritious something you can eat.", "o");
-        Item stone = new Item("mysterious stone", "A mysterious shinny stone. I wonder what I can do with it...", "o");
+        Item water = new Item("water", "A cold & liquid something you can drink.");
+        Item fire = new Item("fire", "A burning hot & bright something you can cook with.");
+        Item air = new Item("air", "A fresh & volatile something you can blow things with.");
+        Item earth = new Item("earth", "A thick & nutritious something you can eat.");
+        Item stone = new Item("mysterious stone", "A mysterious shinny stone. I wonder what I can do with it...");
 
         // init all locations
         Location start = new Location("center", "in the", "The place where everything began.");

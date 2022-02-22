@@ -10,10 +10,12 @@ public enum Direction {
 
     private int dirInt;
     private String dirString;
+    private char dirChar;
 
     Direction(int dirInt, String dirString) {
         this.dirInt = dirInt;
         this.dirString = dirString;
+        this.dirChar = dirString.charAt(0);
     }
 
     public int asIndex(){
@@ -22,5 +24,9 @@ public enum Direction {
 
     public String asString(){
         return this.dirString.toUpperCase(Locale.ROOT);
+    }
+
+    public char asChar() {
+        return dirChar;
     }
 }

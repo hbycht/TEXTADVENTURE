@@ -76,4 +76,9 @@ public class Gate extends Describable {
             return this.endings[1];
         return this.endings[0];
     }
+
+    @Override
+    public String getDescription() {
+        return super.getDescription() + " " + (this.isOpen ? "It is open." : "It is closed.");
+    }
 }

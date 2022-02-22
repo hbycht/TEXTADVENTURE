@@ -64,6 +64,7 @@ public class Game {
         this.handlers.add(new DropHandler(this));
         this.handlers.add(new UseHandler(this));
         this.handlers.add(new InventoryHandler(this));
+        this.handlers.add(new LookHandler(this));
 
         // init all items
         Item water = new Item("water", "A cold & liquid something you can drink.", "o");

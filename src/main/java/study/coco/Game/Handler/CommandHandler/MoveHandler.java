@@ -47,7 +47,7 @@ public class MoveHandler extends CommandHandler {
                 player.setActualGate(null);
                 message += String.format(stepMsg, this.direction.asString());
                 message += LetsSeeMsg;
-                message += player.getPosition().getFullDescription();
+                message += player.getPosition().getMoveDescription();
             }
             else {
                 // PRINT MESSAGE THAT THE PLAYER CAN'T PASS THE CLOSED GATE

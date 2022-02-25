@@ -8,7 +8,7 @@ public class Location extends Describable {
     private Gate[] gates;
     private Inventory inventory;
 
-    private final String locationNameMsg = "I'm now %s %s.";
+    private final String locationNameMsg = "I'm standing %s %s.";
     private String itemOverviewMsg = "I can see %d item%s:";
     private String noItemsMsg = "I can't see any items.";
     private final String dirDescriptionMsg = "In the %s I can see a %s.";
@@ -45,16 +45,22 @@ public class Location extends Describable {
         return preposition;
     }
 
-    public String getFullDescription(){
+    public String getMoveDescription(){
         return
                 // Location name
                 String.format(locationNameMsg, this.getPreposition(), this.getName().toUpperCase()) + "\n" +
-                // Location description
-                this.getDescription() + "\n" +
-                // Direction overview
-                this.getDirectionOverview() +
-                // List of items in location
-                this.getItemOverview();
+                        // Location description
+                        this.getDescription() + "\n";
+    }
+
+    public String getLookDescription(){
+        return
+                // The basic move description
+                this.getMoveDescription() +
+                        // Direction overview
+                        this.getDirectionOverview() +
+                        // List of items in location
+                        this.getItemOverview();
     }
 
     public String getDirectionOverview() {

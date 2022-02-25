@@ -119,7 +119,7 @@ public class Game {
         System.out.println("TEXT ADVENTURE " + this.getClass().getSimpleName().toUpperCase(Locale.ROOT) + " by Henning Brode © 2022\n");
 
         // first terminal outputs as overview
-        System.out.println(this.player.getPosition().getFullDescription());
+        System.out.println(this.player.getPosition().getMoveDescription());
         System.out.println(inputMsg);
 
         // run until game finished
@@ -167,11 +167,11 @@ public class Game {
         this.printHandlerMessage();
 
         // debug
-        System.out.println("actual Gate: " + (this.player().getActualGate() != null ? this.player().getActualGate().getName() : "no gate selected"));
+//        System.out.println("actual Gate: " + (this.player().getActualGate() != null ? this.player().getActualGate().getName() : "no gate selected"));
 //        System.out.println("keyword: " + (this.player().getActualGate().hasKeyword() ? this.player().getActualGate().getKeyword() : "no"));
 
         // ask for next input
-        if(currentHandler.getType() != "error" && currentHandler.getType() != "exit") // but don't ask for an ERROR or EXIT command
+        if(!currentHandler.getType().equalsIgnoreCase("error") && !currentHandler.getType().equalsIgnoreCase("exit")) // but don't ask for an ERROR or EXIT command
             System.out.println(inputMsg);
     }
 

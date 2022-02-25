@@ -35,7 +35,7 @@ public class LookHandler extends CommandHandler {
 
         // GIVE LOCATION DESCRIPTION IF INPUT OBJECT IS EMPTY OR "AROUND"
         if(object.isBlank() || object.equals("around"))
-            this.setMessage(actualLocation.getFullDescription());
+            this.setMessage(actualLocation.getLookDescription());
 
         else{
             // GIVE DESCRIPTION OF THE INPUT OBJECT IF IT EXISTS

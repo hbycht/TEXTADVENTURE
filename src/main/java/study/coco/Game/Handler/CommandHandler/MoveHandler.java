@@ -18,7 +18,7 @@ public class MoveHandler extends CommandHandler {
     private static final String errorMsg = "From here I can't go %s.\nAvailable directions:\n%s";
     private static final String stepMsg = "I went %s.\n";
     private static final String tryStepMsg = "I tried to go %s...\n";
-    private static final String closedGateMsg = "The %s is closed. Is here a key somewhere?";
+    private static final String closedGateMsg = "The %s is closed. How can I open it?";
 
     public MoveHandler(Game game) {
         super(game, type, commands, LetsSeeMsg);

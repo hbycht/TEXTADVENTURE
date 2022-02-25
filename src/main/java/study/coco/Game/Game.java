@@ -82,7 +82,7 @@ public class Game {
 
         // init all gates
         Gate gC_N = new Gate("gate to north", "A sky gate with a small sign on it that says \"North\".", earth);
-        Gate gC_S = new Gate("gate to south", "A sky gate with a small sign on it that says \"South\".", water);
+        Gate gC_S = new Gate("gate to south", "A sky gate with a small sign on it that says \"South\".", "water");
         Gate gC_W = new Gate("gate to west", "A sky gate with a small sign on it that says \"West\".");
         Gate gC_E = new Gate("gate to east", "A sky gate with a small sign on it that says \"East\".");
 
@@ -168,6 +168,7 @@ public class Game {
 
         // debug
         System.out.println("actual Gate: " + (this.player().getActualGate() != null ? this.player().getActualGate().getName() : "no gate selected"));
+//        System.out.println("keyword: " + (this.player().getActualGate().hasKeyword() ? this.player().getActualGate().getKeyword() : "no"));
 
         // ask for next input
         if(currentHandler.getType() != "error" && currentHandler.getType() != "exit") // but don't ask for an ERROR or EXIT command

@@ -10,6 +10,7 @@ import study.coco.Game.Describable.Item;
 public abstract class ItemHandler extends CommandHandler {
 
     private static final String noItemMsg = "I have to specify an <ITEM> to %s it.";
+    private static final String noItemToUseMsg = "I have to specify an <ITEM> or a <KEYWORD> to USE it.";
 
     public ItemHandler(Game game, String type, String[] commands, String message) {
         super(game, type, commands, message);
@@ -23,7 +24,12 @@ public abstract class ItemHandler extends CommandHandler {
         if(!this.game.getInputObject().isBlank())
             this.handleItem();
         else
-            this.setMessage(String.format(noItemMsg, this.getType().toUpperCase()));
+            // FOR "USE" HANDLER
+            if(this.getType().equalsIgnoreCase("use"))
+                this.setMessage(String.format(noItemToUseMsg));
+            // FOR EVERY OTHER HANDLER
+            else
+                this.setMessage(String.format(noItemMsg, this.getType().toUpperCase()));
     }
 
     /**

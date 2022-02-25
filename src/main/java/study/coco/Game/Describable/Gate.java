@@ -1,12 +1,17 @@
 package study.coco.Game.Describable;
 
+import java.util.Objects;
+
 public class Gate extends Describable {
-    private Location[] endings;
-    private Item key;
+    private final Location[] endings;
+    private final Item key;
+    private final String keyword;
     private boolean isOpen;
 
-    private String wrongKeyMsg = "I can't open the %s with %s.";
-    private String rightKeyMsg = "The %s opens and I can pass it now.";
+    private final String stillOpenMsg = "... but the %s is still open. I can pass it.";
+    private final String rightKeyMsg = "... CLICK! The %s opens and I can pass it now.";
+    private final String wrongKeyMsg = "... but I can't open the %s with %s.";
+    private final String wrongKeywordMsg = "... but '%s' is not the right keyword to open the %s.";
 
     /**
      * Constructor for an OPEN gate
@@ -17,11 +22,12 @@ public class Gate extends Describable {
         super(name, description);
         this.endings = new Location[2];
         this.key = null;
+        this.keyword = ".";
         this.isOpen = true;
     }
 
     /**
-     * Constructor for a CLOSED gate.
+     * Constructor for a CLOSED gate per KEY.
      * @param name of the gate. It appears when the player trys to pass the gate.
      * @param description of the gate. It appears when the player looks at the gate.
      * @param key for the gate. {@code Item} the player have to use to open the gate.
@@ -30,6 +36,21 @@ public class Gate extends Describable {
         super(name, description);
         this.endings = new Location[2];
         this.key = key;
+        this.keyword = ".";
+        this.isOpen = false;
+    }
+
+    /**
+     * Constructor for a CLOSED gate per KEYWORD.
+     * @param name of the gate. It appears when the player trys to pass the gate.
+     * @param description of the gate. It appears when the player looks at the gate.
+     * @param keyword for the gate. {@code String} the player types in to open the gate.
+     */
+    public Gate(String name, String description, String keyword) {
+        super(name, description);
+        this.endings = new Location[2];
+        this.key = null;
+        this.keyword = keyword;
         this.isOpen = false;
     }
 
@@ -50,12 +71,32 @@ public class Gate extends Describable {
      * @return Returns the representative message {@code String}.
      */
     public String open(Item key) {
-        if(key == this.key){
-            isOpen = true;
-            return String.format(rightKeyMsg, this.getName().toUpperCase());
-        }
+        if(!isOpen)
+            if(key == this.key){
+                isOpen = true;
+                return String.format(rightKeyMsg, this.getName().toUpperCase());
+            }
+            else
+                return String.format(wrongKeyMsg, this.getName().toUpperCase(), key.getName().toUpperCase());
         else
-            return String.format(wrongKeyMsg, this.getName().toUpperCase(), key.getName().toUpperCase());
+            return String.format(stillOpenMsg, this.getName().toUpperCase());
+    }
+
+    /**
+     * Opens the gate if the player uses the right keyword.
+     * @param keyword {@code String} the player tries to open the gate with.
+     * @return Returns the representative message {@code String}.
+     */
+    public String open(String keyword) {
+        if(!this.isOpen)
+            if(this.keyword.equalsIgnoreCase(keyword)){
+                this.isOpen = true;
+                return String.format(rightKeyMsg, this.getName().toUpperCase());
+            }
+            else
+                return String.format(wrongKeywordMsg, keyword.toUpperCase(), this.getName().toUpperCase());
+        else
+            return String.format(stillOpenMsg, this.getName().toUpperCase());
     }
 
     /**
@@ -63,7 +104,15 @@ public class Gate extends Describable {
      * @return Returns true if the gate is open.
      */
     public boolean isOpen() {
-        return isOpen;
+        return this.isOpen;
+    }
+
+    public boolean hasKey(){
+        return this.key != null;
+    }
+
+    public boolean hasKeyword(){
+        return !this.keyword.equalsIgnoreCase(".");
     }
 
     /**
@@ -80,5 +129,9 @@ public class Gate extends Describable {
     @Override
     public String getDescription() {
         return super.getDescription() + " " + (this.isOpen ? "It is open." : "It is closed.");
+    }
+
+    public String getKeyword() {
+        return keyword;
     }
 }

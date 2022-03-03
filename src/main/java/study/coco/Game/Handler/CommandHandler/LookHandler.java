@@ -31,7 +31,7 @@ public class LookHandler extends CommandHandler {
         Location actualLocation = this.game.player().getPosition();
 
         // debug
-        System.out.println("'" + object + "'");
+//        System.out.println("'" + object + "'");
 
         // GIVE LOCATION DESCRIPTION IF INPUT OBJECT IS EMPTY OR "AROUND"
         if(object.isBlank() || object.equals("around"))
@@ -63,6 +63,7 @@ public class LookHandler extends CommandHandler {
         // LOOK FOR ITEM IN LOCATION
         for (Item item : actualLocation.inventory().getItems()) {
             if (item.getName().equalsIgnoreCase(name))
+                player.setActualItem(item);
                 return item;
         }
 

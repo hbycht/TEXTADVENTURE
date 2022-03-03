@@ -27,23 +27,17 @@ public class UseHandler extends ItemHandler {
         Item key = this.checkForItemInInventory(inputObj);
         Location position = this.game.player().getPosition();
         Gate actualGate = this.game.player().getActualGate();
+        Item actualItem = this.game.player().getActualItem();
 
         String message = String.format(tryMsg, inputObj);
 
-//        // IF KEY ITEM IS IN INVENTORY
-//        if(key != null)
-//            // IF PLAYER LOOKS AT A GATE RIGHT NOW
-//            if(actualGate != null)
-//                this.setMessage(actualGate.open(key));
-//            else
-//                this.setMessage(noGateErrorMsg);
-//        else{
-////            if(actualGate.getKeyword().equals(inputObj))
-//            this.setMessage(String.format(noItemErrorMsg, this.game.getInputObject().toUpperCase()));
-//        }
-
+        // IF PLAYER LOOKS AT FINAL ITEM & USES FINAL KEY
+        if(this.game.finalItem().getName().equalsIgnoreCase(actualItem.getName()) && this.game.finalKey().getName().equalsIgnoreCase(inputObj)){
+            // SOLVE THE GAME (Goal of the game)
+            this.game.solve();
+        }
         // IF PLAYER LOOKS AT A GATE RIGHT NOW
-        if(actualGate != null){
+        else if(actualGate != null){
             // IF IT'S A KEY GATE
             if(actualGate.hasKey()){
                 // IF KEY ITEM IS IN INVENTORY

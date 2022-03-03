@@ -8,6 +8,7 @@ public class Player {
     private Location position;
     private Gate actualGate;
     private Inventory inventory;
+    private Item actualItem;
 
     public Player(Location position) {
         this.position = position;
@@ -36,16 +37,24 @@ public class Player {
         this.position = position;
     }
 
-    public void setActualGate(Gate actualGate) {
-        this.actualGate = actualGate;
-    }
-
     public Location getPosition() {
         return position;
     }
 
+    public void setActualGate(Gate actualGate) {
+        this.actualGate = actualGate;
+    }
+
     public Gate getActualGate() {
         return actualGate;
+    }
+
+    public void setActualItem(Item actualItem) {
+        this.actualItem = actualItem;
+    }
+
+    public Item getActualItem() {
+        return actualItem;
     }
 
     public Inventory inventory() {

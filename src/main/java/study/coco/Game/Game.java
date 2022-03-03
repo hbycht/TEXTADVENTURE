@@ -34,6 +34,9 @@ public class Game {
     // some message presets
     private String inputCall = " >> ";
     private String inputMsg = "\nWhat should I do next?";
+    private String gameHeadline = "\nM Y S T E R I O U S   G A R D E N\n- - - - - - -\nA TEXT ADVENTURE by Henning Brode © 2022\n";
+    private String introMsg = "Game intro...\nbla bla bla....\n\nType 'help' to get some useful instructions.\n\n";
+    private String solvedGameMsg = "Congratulation! You won the game!";
 
     // list of available input handlers
     private ArrayList<Handler> handlers = new ArrayList<>();
@@ -47,8 +50,14 @@ public class Game {
     // init player
     private Player player;
 
-    // game state
+    // init final items
+    private Item finalItem;
+    private Item finalKey;
+
+    // init game states
     private boolean finished;
+    private boolean solved;
+
 
     public Game() throws IOException {
         // init terminal & input instances
@@ -73,7 +82,13 @@ public class Game {
         Item earth = new Item("earth", "A thick & nutritious something you can eat.");
         Item stone = new Item("mysterious stone", "A mysterious shinny stone. I wonder what I can do with it...");
 
+        // set final items
+        // (player has to look at the finalItem and then use the finalKey)
+        finalItem = water;
+        finalKey = stone;
+
         // init all locations
+        Location auto = new Location("Auto", "im", "Es ist ein alter Audi mit braunen Armaturen und im Innenraum riecht es noch wie früher, als wir damit immer nach Italien in den Urlaub gefahren sind.");
         Location start = new Location("center", "in the", "The place where everything began.");
         Location north = new Location("north", "in the", "It's cold and freezy.");
         Location south = new Location("south", "in the", "Oh nice, it's super sunny.");
@@ -109,25 +124,71 @@ public class Game {
         // add some items to players inventory
         player.inventory().addItem(stone);
 
+        // set game states
         finished = false;
+        solved = false;
     }
 
     /**
      *  Basic game logic.
      */
     public void run() {
-        System.out.println("TEXT ADVENTURE " + this.getClass().getSimpleName().toUpperCase(Locale.ROOT) + " by Henning Brode © 2022\n");
+
+        // initial messages
+        this.printInitialMessages();
+
+        // run until game is finished
+        while (!this.finished) {
+            // until game is solved
+            if(!this.solved){
+                // get current handler and process game logic
+                currentHandler = this.getCurrentHandler(); // must be the first operation before handle() & printUpdate()
+                this.processGameLogic();
+            }
+            else {
+                this.printGameIsSolvedMessage();
+                this.finish();
+            }
+        }
+    }
+
+    /**
+     * Processes the game logic: it executes the handle function of the current handler.
+     */
+    private void processGameLogic() {
+        // for debugging
+//        this.handleCount++;
+//        this.handleTypes += currentHandler.getType() + " ";
+
+        // execute the handler actions
+        currentHandler.handle();
+
+        // update the terminal
+        this.printHandlerMessage();
+
+        // debug
+//        System.out.println("actual Gate: " + (this.player().getActualGate() != null ? this.player().getActualGate().getName() : "no gate selected"));
+//        System.out.println("keyword: " + (this.player().getActualGate().hasKeyword() ? this.player().getActualGate().getKeyword() : "no"));
+
+        // ask for next input
+        if(!currentHandler.getType().equalsIgnoreCase("error") && !currentHandler.getType().equalsIgnoreCase("exit") && !this.solved) // but don't ask for an ERROR or EXIT command
+            System.out.println(inputMsg);
+    }
+
+    private void printInitialMessages(){
+        // Game headline
+        System.out.println(this.gameHeadline);
+
+        // Introductions
+        System.out.println(this.introMsg);
 
         // first terminal outputs as overview
         System.out.println(this.player.getPosition().getMoveDescription());
         System.out.println(inputMsg);
+    }
 
-        // run until game finished
-        while (!this.finished) {
-            // get current handler and process game logic
-            currentHandler = this.getCurrentHandler(); // must be the first operation before handle() & printUpdate()
-            this.processGameLogic();
-        }
+    private void printGameIsSolvedMessage(){
+        System.out.println(this.solvedGameMsg);
     }
 
     /**
@@ -150,29 +211,6 @@ public class Game {
         }
         // else return default error handler
         return errorHandler;
-    }
-
-    /**
-     * Processes the game logic: it executes the handle function of the current handler.
-     */
-    private void processGameLogic() {
-        // for debugging
-//        this.handleCount++;
-//        this.handleTypes += currentHandler.getType() + " ";
-
-        // execute the handler actions
-        currentHandler.handle();
-
-        // update the terminal
-        this.printHandlerMessage();
-
-        // debug
-//        System.out.println("actual Gate: " + (this.player().getActualGate() != null ? this.player().getActualGate().getName() : "no gate selected"));
-//        System.out.println("keyword: " + (this.player().getActualGate().hasKeyword() ? this.player().getActualGate().getKeyword() : "no"));
-
-        // ask for next input
-        if(!currentHandler.getType().equalsIgnoreCase("error") && !currentHandler.getType().equalsIgnoreCase("exit")) // but don't ask for an ERROR or EXIT command
-            System.out.println(inputMsg);
     }
 
     /**
@@ -231,10 +269,33 @@ public class Game {
     }
 
     /**
+     * Solve the game.
+     */
+    public void solve(){
+        this.solved = true;
+    }
+
+    /**
      * Returns the player of the Game instance.
      * @return {@code Player} of the game.
      */
     public Player player(){
         return this.player;
+    }
+
+    /**
+     * Returns the final item of the game.
+     * @return {@code Item}
+     */
+    public Item finalItem() {
+        return finalItem;
+    }
+
+    /**
+     * Returns the final key of the game.
+     * @return {@code Item}
+     */
+    public Item finalKey() {
+        return finalKey;
     }
 }

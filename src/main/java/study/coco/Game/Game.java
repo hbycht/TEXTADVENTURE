@@ -33,9 +33,90 @@ public class Game {
     // some message presets
     private String inputCall = " >> ";
     private String inputMsg = "\nWas soll ich als nächstes tun?";
-    private String gameHeadline = "\nM Y S T E R I O U S   G A R D E N\n- - - - - - -\nEin TEXT ADVENTURE von Henning Brode © 2022\n";
-    private String introMsg = "Game intro...\nbla bla bla....\n\nType 'help' to get some useful instructions.\n\n";
-    private String solvedGameMsg = "Congratulation! You won the game!";
+    private String gameHeadline = """
+            
+            █▀▄▀█ ▀▄    ▄  ▄▄▄▄▄      ▄▄▄▄▀ ▄███▄   █▄▄▄▄ ▀▄    ▄\s
+            █ █ █   █  █  █     ▀▄ ▀▀▀ █    █▀   ▀  █  ▄▀   █  █ \s
+            █ ▄ █    ▀█ ▄  ▀▀▀▀▄       █    ██▄▄    █▀▀▌     ▀█  \s
+            █   █    █   ▀▄▄▄▄▀       █     █▄   ▄▀ █  █     █   \s
+               █   ▄▀                ▀      ▀███▀     █    ▄▀    \s
+              ▀  ▄▀  ██   █▄▄▄▄ ██▄   ▄███▄      ▄   ▀           \s
+               ▄▀    █ █  █  ▄▀ █  █  █▀   ▀      █                 \s
+               █ ▀▄  █▄▄█ █▀▀▌  █   █ ██▄▄    ██   █                \s
+               █   █ █  █ █  █  █  █  █▄   ▄▀ █ █  █                \s
+                ███     █   █   ███▀  ▀███▀   █  █ █                \s
+                       █   ▀                  █   ██                \s
+                      ▀                                             \s
+            Ein TEXT ADVENTURE von Henning Brode © 2022
+            """;
+    private String introMsg = """
+            • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • •
+            • -> Mit dem Kommando 'help' erhältst du einige hilfreiche Tipps.   •
+            • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • •
+                    
+            |~ EINLEITUNG:
+            | Die Straße ist eng und kurvig, schon seit 15 Minuten fällt kaum Licht auf die
+            | Fahrbahn. An den Straßenrändern ragen die hohen Tannen in den Himmel und in mir
+            | kommt das Urlaubsgefühl hoch, wie damals, als ich bei meinen Großeltern abgesetzt 
+            | wurde, kurz bevor meine Eltern weiter Richtung Süden fuhren. Das letzte Mal, dass
+            | wir alle gemeinsam hier waren muss über sieben Jahre her sein. Seitdem hatte ich 
+            | mich davor gedrückt, das leere alleinstehende Haus, das seit geraumer Zeit mir 
+            | gehört, zu betreten.
+            | Dabei hatte da dieser Brief auf meinem Kopfkissen gelegen, kurz nachdem sie mir 
+            | sagten, Oma habe mir das alte Häuschen im Wald vermacht. Eine Nachricht, die mich 
+            | sprachlos hinterließ. Ich dachte, es sei eine Erklärung für diese Entscheidung, 
+            | hatte ich doch immer auch ein wenig Angst gehabt vor dem Holzhaus, dessen meisten 
+            | Kellertüren stets geschlossen waren. Stattdessen lag in dem Umschlag nur ein rostiger
+            | mit den Blüten des Fingerhutes verzierter Schlüssel und eine kurze Notiz.
+            | Mit beiden Gegenständen habe ich mich nun also auf den weiten Weg in den tiefen Wald
+            | gemacht, um die Antworten auf meine Fragen zu finden.
+                 
+            Ich parke das alte Auto vor dem Haus, stelle den Motor ab und betrete den %s.
+                   
+            Ich schaue mich um:""";
+    private String solvedGameMsg = """
+            Als ich das kleine Fläschchen öffne, strömt die silbrig schimmernde Flüssigkeit hinaus und 
+            vermischt sich mit der Flüssigkeit, die sich in der vor mir schwebenden Schale befindet. 
+            Es zischt und ein helles Licht erstrahlt. Plötzlich kann ich meine Großeltern erkennen. 
+            Ich tauche mein Gesicht in die Schale und kann nun die Stimme meiner Oma hören:
+                    
+            'Mein Liebling,
+            bestimmt hast du nun mehr Fragen als vorher.
+                    
+            Unsere Familie entstammt einer alten Hexenlinie und auch in dir ströhmt magisches Blut.
+            Wenn du dein Herz und deinen Blick geöffnet lässt, wirst du alle Antworten finden.
+                    
+            Komm hierher zurück, wann immer du einen Rat suchst.
+                    
+            Wir haben dich lieb!'
+                    
+            Währenddessen sehe ich, wie Oma und Opa die Pflanzen auf den Beeten pflegen, ohne sie mit den 
+            Händen zu berühren.
+                    
+            * • ~ • * • ~ • * • - ~ - • * • ~ • * • ~ • *
+                    
+                   ▄███▄      ▄   ██▄   ▄███▄  \s
+                    █▀   ▀      █  █  █  █▀   ▀ \s
+                    ██▄▄    ██   █ █   █ ██▄▄   \s
+                    █▄   ▄▀ █ █  █ █  █  █▄   ▄▀\s
+                    ▀███▀   █  █ █ ███▀  ▀███▀  \s
+                            █   ██              \s
+                                            \s
+            * • ~ • * • ~ • * • - ~ - • * • ~ • * • ~ • *            
+                    
+                | Herzlichen Glückwunsch!           |
+                | Du hast alle Rätsel gelöst.       |
+                |                                   |
+                | Ich hoffe, du hattest viel Spaß!  |
+                |                                   |
+                | Bis bald,                         |
+                |       Henning!                    |
+                |                                   |
+                |                                   |
+                | © 2022                            |
+                | Kontakt: hello@henningbrode.de    |
+            
+            """;
 
     // list of available input handlers
     private ArrayList<Handler> handlers = new ArrayList<>();
@@ -85,21 +166,26 @@ Ein rostiger alter Schlüssel für Oma und Opas Waldhäuschen.""");
         Item k2 = new Item("Brecheisen", """
 Ein altes rostiges Brecheisen. Hiermit kann man bestimmt gut Dinge aufhebeln.""");
         Item gedicht = new Item("Gedicht", """
-Das Gedicht 'Fingerhütchen' von Conrad Ferdinand Meyer ist auf einem mit Fingerhüten verzierten Pergament geschrieben:
-FINGERHÜTCHEN
-Liebe Kinder, wißt ihr, wo
-Fingerhut zu Hause?
-Tief im Tal von Acherloo
-hat er Herd und Klause;
-aber schon in jungen Tagen
-muß er einen Höcker tragen;
-geht er, wunderlicher nie
-wallte man auf Erden!
-Sitzt er, staunen Kinn und Knie,
-daß sie Nachbarn werden.
-(...)""");
+Das Gedicht 'Fingerhütchen' von Conrad Ferdinand Meyer ist auf einem mit Fingerhüten
+verzierten Pergament geschrieben:
+• • • • • • • • • • • • • • • • • • •
+• FINGERHÜTCHEN                     •
+• -------------                     •
+• Liebe Kinder, wißt ihr, wo        •
+• Fingerhut zu Hause?               •
+• Tief im Tal von Acherloo          •
+• hat er Herd und Klause;           •
+• aber schon in jungen Tagen        •
+• muß er einen Höcker tragen;       •
+• geht er, wunderlicher nie         •
+• wallte man auf Erden!             •
+• Sitzt er, staunen Kinn und Knie,  •
+• daß sie Nachbarn werden.          •
+• (...)                             •
+• • • • • • • • • • • • • • • • • • •""");
         Item portrait = new Item("Portrait", """
-Ein wunderschönes Portrait von Oma vor dem Eifelturm. Ja so fröhlich sah sie immer aus. Unterzeichnet wurde es mit 'C.R.W. 11/07/1961'.""");
+Ein wunderschönes Portrait von Oma vor dem Eifelturm. Ja so fröhlich sah sie immer aus. 
+Unterzeichnet wurde es mit 'C.R.W. 11/07/1961'.""");
         Item k5 = new Item("Feuerzeug", """
 Ein stinknormales Feuerzeug.""");
         Item k6 = new Item("Marmorfigur", """
@@ -120,59 +206,101 @@ FINGERHUT
 Wissenschaftlicher Name: Digitalis
 Familie: Wegerichgewächse (Plantaginaceae)
 Ordnung: Lippenblütlerartige (Lamiales)
-Die Fingerhüte sind eine Pflanzengattung aus der Familie der Wegerichgewächse. Die etwa 25 Arten sind in Europa, Nordafrika und im westlichen Asien verbreitet.
+Die Fingerhüte sind eine Pflanzengattung aus der Familie der Wegerichgewächse. 
+Die etwa 25 Arten sind in Europa, Nordafrika und im westlichen Asien verbreitet.
 (...)""");
         Item k9 = new Item("Fingerhutsamen", """
 Jede dieser Kapseln enthält einige Samen, aus den neue Fingerhüte entspringen können.""");
         Item k10 = new Item("Amethyst", """
 Ein wirklich riesiger dunkel violetter Amethyst-Kristall. Wie viel mag der wohl wiegen?""");
         Item chiffre = new Item("Lexikonseite", """
-Eine Seite aus einem alten Lexikon./n/n
+Eine Seite aus einem alten Lexikon.
+
 CÄSAR-CHIFFRE
-Die Caesar-Verschlüsselung (auch als Cäsar-Chiffre bezeichnet) ist ein einfaches symmetrisches Verschlüsselungsverfahren, das auf der monographischen und monoalphabetischen Substitution basiert.
-Bei der Verschlüsselung wird jeder Buchstabe des Klartexts auf einen Geheimtextbuchstaben abgebildet. Diese Abbildung ergibt sich, indem man die Zeichen eines geordneten Alphabets um eine bestimmte Anzahl zyklisch nach rechts verschiebt (rotiert); zyklisch bedeutet, dass man beim Verschieben über Z hinaus wieder bei A anfangend weiterzählt. 
-Die Anzahl der verschobenen Zeichen bildet den Schlüssel, der für die gesamte Verschlüsselung unverändert bleibt. 
+Die Caesar-Verschlüsselung (auch als Cäsar-Chiffre bezeichnet) ist ein einfaches symmetrisches
+Verschlüsselungsverfahren, das auf der monographischen und monoalphabetischen Substitution basiert.
+Bei der Verschlüsselung wird jeder Buchstabe des Klartexts auf einen Geheimtextbuchstaben abgebildet. 
+Diese Abbildung ergibt sich, indem man die Zeichen eines geordneten Alphabets um eine bestimmte Anzahl 
+zyklisch nach rechts verschiebt (rotiert); zyklisch bedeutet, dass man beim Verschieben über Z hinaus 
+wieder bei A anfangend weiterzählt. 
+Die Anzahl der verschobenen Zeichen bildet den Schlüssel, der für die gesamte Verschlüsselung 
+unverändert bleibt. 
+
 Beispiel für eine Verschiebung um drei Zeichen:
 A B C D ... W X Y Z
 D E F E ... Z A B C""");
         Item k12 = new Item("Fläschchen", """
-Ein durchsichtiges Glasfläschchen gefüllt mit einer mysteriösen silber schimmernden Flüssigkeit. Auf einem kleinen Etikett steht:
+Ein durchsichtiges Glasfläschchen gefüllt mit einer mysteriösen silber schimmernden Flüssigkeit. 
+Auf einem kleinen Etikett steht:
 •~ liquida memoria ~•""");
 
         // INIT ALL LOCATIONS
         Location vorgarten = new Location("Vorgarten", "im",
-                "Ein kleiner mit flachen Steinen ausgelegter Weg führt zum Eingang des Hauses. Auf der linken Seite blühen farbenfrohe Blumen. Rechts vom Weg gibt es einen kleinen Teich, in dem drei kleine Goldfische schwimmen. Im Süden steht der alte schwarze Audi, mit dem ich hergefahren bin.");
+                """
+                        Ein kleiner mit flachen Steinen ausgelegter Weg führt zum Eingang des Hauses. Auf der 
+                        linken Seite blühen farbenfrohe Blumen. Rechts vom Weg gibt es einen kleinen Teich, in 
+                        dem drei kleine Goldfische schwimmen. Im Süden steht der alte schwarze Audi, mit dem ich 
+                        hergefahren bin.""");
         Location flur = new Location("Hausflur", "im",
-                "Ein kleiner schmaler Gang bildet den Eingangsbereich des kleinen Hauses. An der Garderobe hängen noch zwei alte Jacken und ein Hut. Auf dem kleinen Holzschränkchen steht ein Spiegel.");
+                """
+                        Ein kleiner schmaler Gang bildet den Eingangsbereich des kleinen Hauses.
+                        An der Garderobe hängen noch zwei alte Jacken und ein Hut. 
+                        Auf dem kleinen Holzschränkchen steht ein Spiegel.""");
         Location schlafzimmer = new Location("Schlafzimmer", "im",
-                "Ein gemütlicher kleiner Raum mit einem großen Bett. An der Wand steht ein Kleiderschrank aus altem Holz.");
+                """
+                        Ein gemütlicher kleiner Raum mit einem großen Bett. An der Wand steht ein Kleiderschrank 
+                        aus altem Holz.""");
         Location bad = new Location("Badezimmer", "im",
-                "Ein vollständig mit weißem Marmor ausgekleideter Raum. Die Verkleidung der Armatur hat Oma aus bunten Mosaiksteinen selbst gestaltet. Es riecht noch immer leicht nach Lavendel.");
+                """
+                        Ein vollständig mit weißem Marmor ausgekleideter Raum. Die Verkleidung der Armatur hat 
+                        Oma aus bunten Mosaiksteinen selbst gestaltet. Es riecht noch immer leicht nach Lavendel.""");
         Location wohnzimmer = new Location("Wohnzimmer", "im",
-                "Ein für dieses Haus eher ungewöhnlich großer Raum. Die alte Schrankwand beinhaltet allerhand Krimskrams. Neben dem großen gemütlichen Sofa steht Opas alter Plattenspieler.");
+                """
+                        Ein für dieses Haus eher ungewöhnlich großer Raum. Die alte Schrankwand beinhaltet 
+                        allerhand Krimskrams. Neben dem großen gemütlichen Sofa steht Opas alter Plattenspieler.""");
         Location kueche = new Location("Küche", "in der",
-                "Ein kleiner fliederfarbener Geschirrschrank steht neben dem alten Gasherd. Auf einem kleinen Tisch steht ein Vase mit getrockneten Wildblumen. Hier hat Oma immer ihren leckeren Apfelkuchen gebacken.");
+                """
+                        Ein kleiner fliederfarbener Geschirrschrank steht neben dem alten Gasherd. Auf einem kleinen 
+                        Tisch steht ein Vase mit getrockneten Wildblumen. Hier hat Oma immer ihren leckeren 
+                        Apfelkuchen gebacken.""");
         Location garten = new Location("Garten", "im",
-                "Eine große wild gewachsene Wiese ist von zahlreichen Beeten umgeben. Auf der Fläche verteilt stehen mehrere Obstbäume, die nach wie vor Früchte tragen. Um den kleinen Tisch stehen vier Holzstühle. Etwas entfernt bewegt sich die alte Schaukel im Wind.");
+                """
+                        Eine große wild gewachsene Wiese ist von zahlreichen Beeten umgeben. Auf der Fläche verteilt 
+                        stehen mehrere Obstbäume, die nach wie vor Früchte tragen. Um den kleinen Tisch stehen vier 
+                        Holzstühle. Etwas entfernt bewegt sich die alte Schaukel im Wind.""");
         Location beet = new Location("Beet", "im",
-                "Mehrere Beetreihen ziehen sich über die Fläche. Hier haben Oma und Opa ihr leckeres Gemüse gepflanzt. Es scheint als seien die Pflanzen in den unzähligen Hochbeeten noch immer quicklebendig. Wer hat sich darum gekümmert? Etwas abseits steht eine Engelsstatue aus Marmor in einem prächtig blühenden Kreis aus Fingerhut.");
+                """
+                        Mehrere Beetreihen ziehen sich über die Fläche. Hier haben Oma und Opa ihr leckeres Gemüse 
+                        gepflanzt. Es scheint als seien die Pflanzen in den unzähligen Hochbeeten noch immer 
+                        quicklebendig. Wer hat sich darum gekümmert? Etwas abseits steht eine Engelsstatue aus Marmor 
+                        in einem prächtig blühenden Kreis aus Fingerhut.""");
         Location schuppen = new Location("Schuppen", "im",
-                "In dieser morschen Laube lässt sich so gut wie jedes Werkzeug finden. Eine staubige Glühbirne spendet nur wenig Licht. Es riecht nach Benzin vom alten Rasenmäher.");
+                """
+                        In dieser morschen Laube lässt sich so gut wie jedes Werkzeug finden. Eine staubige Glühbirne 
+                        spendet nur wenig Licht. Es riecht nach Benzin vom alten Rasenmäher.""");
         Location keller = new Location("Keller", "im",
-                "Ein ziemlich leerer Kellerraum. Eine einzige kleine Wandleuchte wirft schummriges Licht. Eine knarrende Holztreppe führt hoch in den Wohnbereich.");
+                """
+                        Ein ziemlich leerer Kellerraum. Eine einzige kleine Wandleuchte wirft schummriges Licht. Eine 
+                        knarrende Holztreppe führt hoch in den Wohnbereich.""");
         Location weinkammer = new Location("Weinkammer", "in der",
-                "Der kleine dunkle Raum enthält Regale für einige Hundert Flaschen. Die Weine sind nach Jahrgang und Weingut sortiert. Es ist kühl und feucht.");
+                """
+                        Der kleine dunkle Raum enthält Regale für einige Hundert Flaschen. Die Weine sind nach Jahrgang 
+                        und Weingut sortiert. Es ist kühl und feucht.""");
         Location bib = new Location("Bibliothek", "in der",
                 """
-                Jede Wand dieses Raumes ist mit Bücherregalen voll gestellt. In der Mitte steht ein kleiner Holztisch und zwei Ledersessel. Ich weiß noch genau, wie Opa mich oft mit hier runter genommen und aus seinen Büchern vorgelesen hat.
+                Jede Wand dieses Raumes ist mit Bücherregalen voll gestellt. In der Mitte steht ein kleiner Holztisch 
+                und zwei Ledersessel. Ich weiß noch genau, wie Opa mich oft mit hier runter genommen und aus seinen 
+                Büchern vorgelesen hat.
                 An der Westwand hängt ein Messing-Schild mit der Einprägung '5-L'.""");
         Location fackelraum = new Location("Fackelraum", "im",
                 """
-                Ein ziemlich kahler Raum aus massiven Steinwänden. An jeder Seite hängt lediglich eine Fackel, die sich beim Betreten des Raumes auf mysteriöse Weise entflammt hat.
+                Ein ziemlich kahler Raum aus massiven Steinwänden. An jeder Seite hängt lediglich eine Fackel, die sich 
+                beim Betreten des Raumes auf mysteriöse Weise entflammt hat.
                 An der Nordwand hängt ein Messing-Schild mit der Einprägung '3-V'.""");
         Location marmorraum = new Location("Marmorhalle", "in der",
                 """
-                Ein prächtiger mit weißem Marmor ausgekleideter Raum. In der Mitte ragt eine Fischstatue aus einem Marmorbrunnen und speit eine Wasserfontäne.
+                Ein prächtiger mit weißem Marmor ausgekleideter Raum. In der Mitte ragt eine Fischstatue aus einem 
+                Marmorbrunnen und speit eine Wasserfontäne.
                 An der Ostwand hängt ein Messing-Schild mit der Einprägung '6-A'.""");
         Location dunkelkammer = new Location("Dunkelkammer", "in der",
                 """
@@ -180,44 +308,75 @@ Ein durchsichtiges Glasfläschchen gefüllt mit einer mysteriösen silber schimm
                 An der Nordwand hängt ein Messing-Schild mit der Einprägung '2-P'.""");
         Location gewaechshaus = new Location("Gewächshaus", "im",
                 """
-                Ein unterirdisches Gewächshaus voller riesiger Pflanzen, die in bunten Farben blühen. In der Mitte wachsen Fingerhüte im Kreis. Über eine große Glaskuppel fällt Licht von draußen hinein.
+                Ein unterirdisches Gewächshaus voller riesiger Pflanzen, die in bunten Farben blühen. In der Mitte wachsen 
+                Fingerhüte im Kreis. Über eine große Glaskuppel fällt Licht von draußen hinein.
                 An der Südwand hängt ein Messing-Schild mit der Einprägung '4-S'.""");
         Location kristallhoehle = new Location("Kristallhöhle", "in der",
                 """
-                Das hier muss eine Höhle tief unter dem Haus sein. Ein kleiner Bach rinnt über den Boden. In der Mitte der Höhle steht ein Steinpodest. Ein einziger Sonnenstrahl scheint durch einen Riss in der Decke. Es ist feucht und kalt.
+                Das hier muss eine Höhle tief unter dem Haus sein. Ein kleiner Bach rinnt über den Boden. In der Mitte der 
+                Höhle steht ein Steinpodest. Ein einziger Sonnenstrahl scheint durch einen Riss in der Decke. 
+                Es ist feucht und kalt.
                 An der Westwand hängt ein Messing-Schild mit der Einprägung '7-A'.""");
         Location spiegelkabinett = new Location("Spiegelkabinett", "im",
                 """
-                Ein mysteriöser Raum, der komplett mit Spiegeln ausgekleidet ist. Ich kann mich unendlich oft in ihnen erkennen. Doch ich bin kleiner und sehe viel jünger aus. Habe ich da meinen alten Lieblingspulli an?
+                Ein mysteriöser Raum, der komplett mit Spiegeln ausgekleidet ist. Ich kann mich unendlich oft in ihnen 
+                erkennen. Doch ich bin kleiner und sehe viel jünger aus. Habe ich da meinen alten Lieblingspulli an?
                 An der Nordwand hängt ein Messing-Schild mit der Einprägung '1-C'""");
         Location himmelssaal = new Location("Himmelssaal", "in einem",
-                "Es scheint, als sei ich von Wolken umgeben. Ein schwebender Steinpfad führt zu einem Tor aus Amethyst. Es ist ein überaus verwunschener Ort.");
+                """
+                        Es scheint, als sei ich von Wolken umgeben. Ein schwebender Steinpfad führt zu einem Tor aus Amethyst. 
+                        Es ist ein überaus verwunschener Ort.""");
         Location brunnen = new Location("merkwürdigen Ort", "an einem",
-                "Wo bin ich hier? Überall nur gleißendes Licht. Vor mir schwebt eine Schale aus Amethyst, in der sich eine klare Flüssigkeit befindet. Kann ich hier etwas einfüllen?");
+                """
+                        Wo bin ich hier? Überall nur gleißendes Licht. Vor mir schwebt eine Schale aus Amethyst, in der 
+                        sich eine klare Flüssigkeit befindet. Kann ich hier etwas einfüllen?""");
 
         // INIT ALL GATES
         // closed gates
-        Gate g_k1 = new Gate("Haustür", "Eine weiß gestrichene Holztür mit einem kleinen Fenster. Auf einem lila Schild steht 'Herzlich Willkommen!'", k1);
-        Gate g_k2 = new Gate("schwere Eisentür", "Eine massive alte Tür aus Eisen. Meine Kraft reicht nicht aus sie zu bewegen. Sie scheint zu klemmen.", k2);
-        Gate g_k3 = new Gate("Holztür mit geschnitzten Verzierungen", "Eine dunkle Holztür mit verwunschenen Schnitzereien. In der Mitte sitzen acht Walzen mit denen jeweils die Buchstaben von A - Z auswählbar sind. Was mag hier nur das Passwort sein?", "Acherloo");
-        Gate g_k4 = new Gate("Gemälde von Oma", "Ein riesiges Portrait von Oma vor dem Eifelturm. Habe ich das nicht auch schon wo anders gesehen? Unter dem Gemälde auf Fußhöhe befindet sich ein Schild mit der Aufschrift 'Unser Tag in Paris' und daneben kann man acht Zahlen in ein Nummernpad eintippen.", "11071961");
-        Gate g_k5 = new Gate("Steinwand", "In der rechten Ecke der Westwand kann ich einen kleinen Schlitz erkennen. Wenn ich dagegen klopfe, hört sie sich irgendwie anders an als die übrigen Wände. Außerdem guckt knapp unter der Fackel eine Art Docht heraus. Es scheint, als hätte er schonmal gebrannt.", k5);
-        Gate g_k6 = new Gate("Marmorwand", "Eine ebenso prächtige Wand aus Marmor. In der Mitte befindet sich ein kleine Vertiefung in Form einer Raute. ◊", k6);
+        Gate g_k1 = new Gate("Haustür", """
+                Eine weiß gestrichene Holztür mit einem kleinen Fenster. Auf einem lila Schild steht 'Herzlich Willkommen!'""", k1);
+        Gate g_k2 = new Gate("schwere Eisentür", """
+                Eine massive alte Tür aus Eisen. Meine Kraft reicht nicht aus sie zu bewegen. Sie scheint zu klemmen.""", k2);
+        Gate g_k3 = new Gate("Holztür mit geschnitzten Verzierungen", """
+                Eine dunkle Holztür mit verwunschenen Schnitzereien. In der Mitte sitzen acht Walzen mit denen jeweils 
+                die Buchstaben von A - Z auswählbar sind. Was mag hier nur das Passwort sein?""", "Acherloo");
+        Gate g_k4 = new Gate("Gemälde von Oma", """
+                Ein riesiges Portrait von Oma vor dem Eifelturm. Habe ich das nicht auch schon wo anders gesehen? 
+                Unter dem Gemälde auf Fußhöhe befindet sich ein Schild mit der Aufschrift 'Unser Tag in Paris' und daneben 
+                kann man acht Zahlen in ein Nummernpad eintippen.""", "11071961");
+        Gate g_k5 = new Gate("Steinwand", """
+                In der rechten Ecke der Westwand kann ich einen kleinen Schlitz erkennen. Wenn ich dagegen klopfe, hört sie 
+                sich irgendwie anders an als die übrigen Wände. Außerdem guckt knapp unter der Fackel eine Art Docht heraus. 
+                Es scheint, als hätte er schonmal gebrannt.""", k5);
+        Gate g_k6 = new Gate("Marmorwand", """
+                Eine ebenso prächtige Wand aus Marmor. In der Mitte befindet sich ein kleine Vertiefung in Form einer Raute. 
+                ◊""", k6);
         Gate g_k7 = new Gate("Steinwand", """
-In Mitten der Wand, knapp unter der Glühbirne hängt ein kleines Schild. Durch das minimale Licht kann man die Aufschrift gerade so lesen:
+In Mitten der Wand, knapp unter der Glühbirne hängt ein kleines Schild. Durch das minimale 
+Licht kann man die Aufschrift gerade so lesen:
 Bring Licht ins Dunkle!
 Dadrunter befindet sich ein kleines dunkles Loch.""", k7);
         Gate g_k8 = new Gate("Holztür", """
-Die Tür aus dunklem Nußholz ist hinter einer großen Monstera Pflanze versteckt. In das Holz sind merkwürdige Zeichen eingraviert:
+Die Tür aus dunklem Nußholz ist hinter einer großen Monstera Pflanze versteckt. In das Holz 
+sind merkwürdige Zeichen eingraviert:
 ▬ ● ●   ● ●   ▬ ▬ ●   ● ●   ▬   ● ▬   ● ▬ ● ●   ● ●   ● ● ●
 Neben dem Türknauf befindet sich eine kleine Tastatur.""", "digitalis");
-        Gate g_k9 = new Gate("Spiegeltür", "Eine Tür mit einem großen Spiegel. In der Mitte befindet sich ein kleines Loch. Dadrüber wurde ein prächtiger Fingerhut gemalt. Es sieht so aus, als würde er aus dem Loch herauswachsen. Wie kann ich diese Tür nur öffnen? Vielleicht muss ich etwas in das Loch werfen.", k9);
+        Gate g_k9 = new Gate("Spiegeltür", """
+Eine Tür mit einem großen Spiegel. In der Mitte befindet sich ein kleines Loch. 
+Dadrüber wurde ein prächtiger Fingerhut gemalt. Es sieht so aus, als würde er 
+aus dem Loch herauswachsen. Wie kann ich diese Tür nur öffnen? 
+Vielleicht muss ich etwas in das Loch werfen.""", k9);
         Gate g_k10 = new Gate("Marmortor", """
-Dieses Tor ist der Eingang in den riesigen mysteriösen Marmorblock, der schon seit jeher im Garten von Oma und Opa stand. Ich habe mich schon immer gefragt, was es wohl damit auf sich hat. In Mitten des Tores befindet sich eine Pendelwaage mit der Aufschrift:
-Der wohl Größte seiner Art.""", k10);
+Dieses Tor ist der Eingang in den riesigen mysteriösen Marmorblock, der schon seit jeher 
+im Garten von Oma und Opa stand. Ich habe mich schon immer gefragt, was es wohl damit auf 
+sich hat. 
+In Mitten des Tores befindet sich eine Pendelwaage mit der Aufschrift:
+~~ Der wohl Größte seiner Art. ~~""", k10);
         Gate g_k11 = new Gate("Tor aus Amethyst", """
-Ein riesiges amethystfarbenes Tor. Darin eingraviert steht in großen Buchstaben: ALLE ZUSAMMEN, VERSCHOBEN UM 7.
-Etwas sagt mir, dass ich ein Passwort mit den Fingern auf das Tor zeichnen soll. Doch um welches Wort handelt es sich?""");
+Ein riesiges amethystfarbenes Tor. Darin eingraviert steht in großen Buchstaben: 
+•| ALLE ZUSAMMEN, VERSCHOBEN UM 7 |•
+Etwas sagt mir, dass ich ein Wort mit den Fingern auf das Tor zeichnen soll. 
+Doch um welches Wort handelt es sich?""");
 
         // open gates
         Gate g_01 = new Gate("Tür zwischen Flur und Schlafzimmer", "Eine einfache weiße Holztür.");
@@ -335,10 +494,12 @@ Etwas sagt mir, dass ich ein Passwort mit den Fingern auf das Tor zeichnen soll.
         System.out.println(this.gameHeadline);
 
         // Introductions
-        System.out.println(this.introMsg);
+        System.out.println(String.format(this.introMsg, this.player.getPosition().getName()));
+
+        // TEST OUTRO
+//        System.out.println(this.solvedGameMsg);
 
         // first terminal outputs as overview
-        System.out.println("Ich stehe " + this.player.getPosition().getPreposition() + " " + this.player.getPosition().getName() + ".");
         System.out.println(this.player.getPosition().getDescription());
         System.out.println(inputMsg);
     }

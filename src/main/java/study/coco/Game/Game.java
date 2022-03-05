@@ -78,7 +78,8 @@ public class Game {
             Als ich das kleine Fläschchen öffne, strömt die silbrig schimmernde Flüssigkeit hinaus und 
             vermischt sich mit der Flüssigkeit, die sich in der vor mir schwebenden Schale befindet. 
             Es zischt und ein helles Licht erstrahlt. Plötzlich kann ich meine Großeltern erkennen. 
-            Ich tauche mein Gesicht in die Schale und kann nun die Stimme meiner Oma hören:
+            
+            Ich tauche mein Gesicht in die Schale und kann die Stimme meiner Oma hören:
                     
             'Mein Liebling,
             bestimmt hast du nun mehr Fragen als vorher.
@@ -158,10 +159,13 @@ public class Game {
 
         // INIT ALL ITEMS
         Item brief = new Item("Brief", """
-Der Brief der einst zusammen mit dem rostigen alten Schlüssel auf meinem Kopfkissen lag.\n\n
+Der Brief der einst zusammen mit dem rostigen alten Schlüssel auf meinem Kopfkissen lag.
+
 Darin steht:
-Willst du öffnen jeden Ort,
-nimm des dritten Verses fünftes Wort.""");
+• • • • • • • • • • • • • • • • • • • • • •
+• Willst du öffnen jeden Ort,             •
+• nimm des dritten Verses fünftes Wort.   •
+• • • • • • • • • • • • • • • • • • • • • •""");
         Item k1 = new Item("Hausschlüssel", """
 Ein rostiger alter Schlüssel für Oma und Opas Waldhäuschen.""");
         Item k2 = new Item("Brecheisen", """
@@ -400,7 +404,7 @@ In Mitten des Tores befindet sich eine Pendelwaage mit der Aufschrift:
 Ein riesiges amethystfarbenes Tor. Darin eingraviert steht in großen Buchstaben: 
 •| ALLE ZUSAMMEN, VERSCHOBEN UM 7 |•
 Etwas sagt mir, dass ich ein Wort mit den Fingern auf das Tor zeichnen soll. 
-Doch um welches Wort handelt es sich?""");
+Doch um welches Wort handelt es sich?""", "violett");
 
         // open gates
         Gate g_01 = new Gate("Tür zwischen Flur und Schlafzimmer", "Eine einfache weiße Holztür.");
@@ -422,8 +426,8 @@ Doch um welches Wort handelt es sich?""");
         wohnzimmer.setGates(g_06, g_05, g_03, g_04);
         kueche.setGates(null, null, null, g_05);
         garten.setGates(g_k10, g_08, g_06, g_07);
-        beet.setGates(null, null, null, g_07);
-        schuppen.setGates(null, g_08, null, null);
+        beet.setGates(null, g_07, null, null);
+        schuppen.setGates(null, null, null, g_08);
         keller.setGates(g_k3, g_09, null, g_k2);
         weinkammer.setGates(null, null, null, g_09);
         bib.setGates(g_k4, null, g_k3, null);

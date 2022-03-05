@@ -16,7 +16,7 @@ public class LookHandler extends CommandHandler {
     private static final String[] commands = {"l", "look"};
     private static final String type = "look";
 
-    private static final String lookMsg = "Lass mich <%s> mal genauer betrachten...\n%s";
+    private static final String lookMsg = "Lass mich <%s> mal genauer betrachten...\n\n%s";
     private String errorMsg = "Ich sehe nichts mit dem Namen %s... Hab' ich's richtig geschrieben?";
 
     public LookHandler(Game game) {
@@ -63,7 +63,6 @@ public class LookHandler extends CommandHandler {
         // LOOK FOR ITEM IN LOCATION
         for (Item item : actualLocation.inventory().getItems()) {
             if (item.getName().equalsIgnoreCase(name))
-                player.setActualItem(item);
                 return item;
         }
 

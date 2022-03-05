@@ -9,6 +9,7 @@ public class HelpHandler extends CommandHandler {
 
     private static final String[] commands = {"h", "help", "?"};
     private static final String message = """
+            •••••••••
             H I L F E
             •••••••••
             In diesem Spiel interagierst du lediglich über Kommandos, die du in das Terminal eingibst 

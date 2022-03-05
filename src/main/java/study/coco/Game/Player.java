@@ -49,13 +49,13 @@ public class Player {
         return actualGate;
     }
 
-    public void setActualItem(Item actualItem) {
-        this.actualItem = actualItem;
-    }
-
-    public Item getActualItem() {
-        return actualItem;
-    }
+//    public void setActualItem(Item actualItem) {
+//        this.actualItem = actualItem;
+//    }
+//
+//    public Item getActualItem() {
+//        return actualItem;
+//    }
 
     public Inventory inventory() {
         return inventory;

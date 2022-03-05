@@ -14,14 +14,13 @@ public class MoveHandler extends CommandHandler {
     private static final String type = "move";
     private Direction direction;
 
-    private static final String LetsSeeMsg = "Mal sehen, was es hier so gibt...\n\n";
-    private static final String errorMsg = "Ich kann hier nicht weiter Richtung %s.\nMögliche Richtungen:\n%s";
-    private static final String stepMsg = "Ich gehe nach %s.\n";
+    private static final String errorMsg = "Ich kann hier nicht weiter Richtung %s.\n\nMögliche Richtungen:\n%s";
+    private static final String stepMsg = "Ich gehe nach %s.\n\n";
     private static final String tryStepMsg = "Ich versuch's in Richtung %s...\n";
     private static final String closedGateMsg = "Der Durchgang %s ist verschlossen. Wie kann ich ihn nur öffnen?";
 
     public MoveHandler(Game game) {
-        super(game, type, commands, LetsSeeMsg);
+        super(game, type, commands, "");
     }
 
     @Override
@@ -46,14 +45,13 @@ public class MoveHandler extends CommandHandler {
                 player.setPosition(directedGate.getLocationBehind(player.getPosition()));
                 player.setActualGate(null);
                 message += String.format(stepMsg, this.direction.asString());
-                message += LetsSeeMsg;
                 message += player.getPosition().getMoveDescription();
             }
             else {
                 // PRINT MESSAGE THAT THE PLAYER CAN'T PASS THE CLOSED GATE
                 this.game.player().setActualGate(directedGate);
                 message += String.format(tryStepMsg, this.direction.asString());
-                message += String.format(closedGateMsg, directedGate.getName());
+                message += String.format(closedGateMsg, directedGate.getName().toUpperCase());
             }
 
         }

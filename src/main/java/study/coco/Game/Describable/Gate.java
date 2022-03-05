@@ -128,7 +128,7 @@ public class Gate extends Describable {
 
     @Override
     public String getDescription() {
-        return super.getDescription() + " " + (this.isOpen ? "It is open." : "It is closed.");
+        return super.getDescription() + " " + (this.isOpen ? "Der Durchgang ist offen." : "Der Durchgang ist verschlossen.");
     }
 
     public String getKeyword() {

@@ -54,7 +54,7 @@ public class Game {
             =>>  •  Mit dem Kommando 'help' erhältst du einige hilfreiche Tipps.   •
                 • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • •
                     
-            |~ EINLEITUNG:
+            | ~EINLEITUNG:
             | Die Straße ist eng und kurvig, schon seit 15 Minuten fällt kaum Licht auf die
             | Fahrbahn. An den Straßenrändern ragen die hohen Tannen in den Himmel und in mir
             | kommt das Urlaubsgefühl hoch, wie damals, als ich bei meinen Großeltern abgesetzt 
@@ -234,6 +234,29 @@ D E F E ... Z A B C""");
 Ein durchsichtiges Glasfläschchen gefüllt mit einer mysteriösen silber schimmernden Flüssigkeit. 
 Auf einem kleinen Etikett steht:
 •~ liquida memoria ~•""");
+        // some unimportant ITEMS
+        Item jacke = new Item("Jacke", "Eine alte braune Lederjacke von Opa.");
+        Item hut = new Item("Hut", "Ein schwarzer Filzhut von der Hutmacherin W. Eppstein.");
+        Item regenschirm = new Item("Regenschirm", "Ein bunter Regenschirm.");
+        Item foto = new Item("Foto", "Ein großes Panoramafoto von den französischen Alpen.");
+        Item seife = new Item("Seife", "Ein Stück Seife. Sie riecht wundervoll nach Lavendel.");
+        Item handtuch = new Item("Handtuch", "Ein lila Handtuch.");
+        Item schallplatte = new Item("Schallplatte", "Eine Schallplatte von Pink Floyd. Es ist das Album 'The Dark Side of the Moon.'");
+        Item uhr = new Item("Uhr", "Eine alte kleine Pendeluhr.");
+        Item topf = new Item("Topf", "Ein gußeiserner Topf mit Holzgriff.");
+        Item pfanne = new Item("Pfanne", "Eine gußeiserne Pfanne mit Holzgriff.");
+        Item messer = new Item("Messer", "Ein scharfes Küchenmesser.");
+        Item blumenerde = new Item("Blumenerde", "Ein Sack Blumenerde.");
+        Item blumentopf = new Item("Blumentopf", "Ein Blumentopf aus Ton.");
+        Item stein = new Item("Stein", "Ein wirklich schöner Stein mit einer interessanten Musterung.");
+        Item kraeuter = new Item("Kräuter", "Rosmarin in einem großen Topf.");
+        Item schraubenzieher = new Item("Schraubenzieher", "Ein Kreuzschlitz-Schraubenzieher.");
+        Item zange = new Item("Zange", "Eine alte rostige Rohrzange.");
+        Item hammer = new Item("Hammer", "Ein Dachdeckerhammer.");
+        Item rotwein = new Item("Rotwein", "Eine Flasche Rotwein. Ein 2019er Dornfelder vom Weingut Ebert von der Mosel.");
+        Item weisswein = new Item("Weißwein", "Eine Flasche Weißwein. Ein 2018er Riesling vom Weingut Sachse aus dem Rheingau.");
+        Item kybalion = new Item("Kybalion", "Ein mysteriös wirkendes Buch mit dem Titel KYBALION - Hermetische Philosophie.");
+        Item lexikon = new Item("Lexikon", "Ein altes dickes Lexikon mit unzähligen Artikeln.");
 
         // INIT ALL LOCATIONS
         Location vorgarten = new Location("Vorgarten", "im",
@@ -413,18 +436,39 @@ Doch um welches Wort handelt es sich?""");
         himmelssaal.setGates(g_k11, null, g_k10, null);
         brunnen.setGates(null, null, g_k11, null);
 
-
-        // add items to locations
+        // ADD ITEMS TO LOCATIONS
+        flur.inventory().addItem(jacke);
+        flur.inventory().addItem(hut);
+        flur.inventory().addItem(regenschirm);
         schlafzimmer.inventory().addItem(portrait);
+        schlafzimmer.inventory().addItem(foto);
+        bad.inventory().addItem(seife);
+        bad.inventory().addItem(handtuch);
         wohnzimmer.inventory().addItem(gedicht);
+        wohnzimmer.inventory().addItem(schallplatte);
+        wohnzimmer.inventory().addItem(uhr);
         kueche.inventory().addItem(k5);
+        kueche.inventory().addItem(pfanne);
+        kueche.inventory().addItem(topf);
+        kueche.inventory().addItem(messer);
         beet.inventory().addItem(k9);
         beet.inventory().addItem(k6);
+        beet.inventory().addItem(blumentopf);
+        beet.inventory().addItem(blumenerde);
+        garten.inventory().addItem(kraeuter);
+        garten.inventory().addItem(stein);
         schuppen.inventory().addItem(k7);
         schuppen.inventory().addItem(k2);
+        schuppen.inventory().addItem(hammer);
+        schuppen.inventory().addItem(zange);
+        schuppen.inventory().addItem(schraubenzieher);
+        weinkammer.inventory().addItem(rotwein);
+        weinkammer.inventory().addItem(weisswein);
         bib.inventory().addItem(morse);
         bib.inventory().addItem(pflanzenkarte);
         bib.inventory().addItem(chiffre);
+        bib.inventory().addItem(kybalion);
+        bib.inventory().addItem(lexikon);
         kristallhoehle.inventory().addItem(k10);
         spiegelkabinett.inventory().addItem(k12);
 

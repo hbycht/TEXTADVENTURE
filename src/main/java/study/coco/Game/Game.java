@@ -50,9 +50,9 @@ public class Game {
             Ein TEXT ADVENTURE von Henning Brode © 2022
             """;
     private String introMsg = """
-            • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • •
-            • -> Mit dem Kommando 'help' erhältst du einige hilfreiche Tipps.   •
-            • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • •
+                • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • •
+            =>>  •  Mit dem Kommando 'help' erhältst du einige hilfreiche Tipps.   •
+                • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • •
                     
             |~ EINLEITUNG:
             | Die Straße ist eng und kurvig, schon seit 15 Minuten fällt kaum Licht auf die
@@ -154,6 +154,7 @@ public class Game {
         this.handlers.add(new UseHandler(this));
         this.handlers.add(new InventoryHandler(this));
         this.handlers.add(new LookHandler(this));
+        this.handlers.add(new HelpHandler(this));
 
         // INIT ALL ITEMS
         Item brief = new Item("Brief", """

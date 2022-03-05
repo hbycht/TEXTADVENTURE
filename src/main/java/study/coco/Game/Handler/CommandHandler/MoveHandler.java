@@ -14,11 +14,11 @@ public class MoveHandler extends CommandHandler {
     private static final String type = "move";
     private Direction direction;
 
-    private static final String LetsSeeMsg = "Let's see what I get here...\n\n";
-    private static final String errorMsg = "From here I can't go %s.\nAvailable directions:\n%s";
-    private static final String stepMsg = "I went %s.\n";
-    private static final String tryStepMsg = "I tried to go %s...\n";
-    private static final String closedGateMsg = "The %s is closed. How can I open it?";
+    private static final String LetsSeeMsg = "Mal sehen, was es hier so gibt...\n\n";
+    private static final String errorMsg = "Ich kann hier nicht weiter Richtung %s.\nMögliche Richtungen:\n%s";
+    private static final String stepMsg = "Ich gehe nach %s.\n";
+    private static final String tryStepMsg = "Ich versuch's in Richtung %s...\n";
+    private static final String closedGateMsg = "Der Durchgang %s ist verschlossen. Wie kann ich ihn nur öffnen?";
 
     public MoveHandler(Game game) {
         super(game, type, commands, LetsSeeMsg);

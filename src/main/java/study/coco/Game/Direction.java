@@ -3,10 +3,10 @@ package study.coco.Game;
 import java.util.Locale;
 
 public enum Direction {
-    NORTH(0, "north"),
-    EAST(1, "east"),
-    SOUTH(2, "south"),
-    WEST(3, "west");
+    NORTH(0, "norden"),
+    EAST(1, "osten"),
+    SOUTH(2, "süden"),
+    WEST(3, "westen");
 
     private int dirInt;
     private String dirString;

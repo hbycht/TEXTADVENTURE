@@ -1,10 +1,30 @@
-auto:
-"Auto", "im",
-"Es ist ein alter Audi mit braunen Armaturen und im Innenraum riecht es noch wie früher, als wir damit immer nach Italien in den Urlaub gefahren sind."
+L O C A T I O N S:
+
+vorgarten
+flur
+schlafzimmer
+bad
+wohnzimmer
+kueche
+garten
+beet
+schuppen
+keller
+weinkammer
+bib
+fackelraum
+marmorraum
+dunkelkammer
+gewaechshaus
+kristallhoehle
+spiegelkabinett
+himmelssaal
+brunnen
+
 
 vorgarten
 "Vorgarten", "im",
-"Ein kleiner mit flachen Steinen ausgelegter Weg führt zum Eingang des Hauses. Auf der linken Seite blühen farbenfrohe Blumen. Rechts vom Weg gibt es einen kleinen Teich, in dem drei kleine Goldfische schwimmen."
+"Ein kleiner mit flachen Steinen ausgelegter Weg führt zum Eingang des Hauses. Auf der linken Seite blühen farbenfrohe Blumen. Rechts vom Weg gibt es einen kleinen Teich, in dem drei kleine Goldfische schwimmen. Im Süden steht der alte schwarze Audi, mit dem ich hergefahren bin."
 
 flur
 "Hausflur", "im",
@@ -32,7 +52,7 @@ garten
 
 beet
 "Beet", "im",
-"Mehrere Beetreihen ziehen sich über die Fläche. Hier haben Oma und Opa ihr leckeres Gemüse pflanzt. In den unzähligen Hochbeeten wuchert mittlerweile das Unkraut. Etwas abseits steht eine Engelsstatue aus Marmor in einem prächtig blühenden Kreis aus Fingerhut."
+"Mehrere Beetreihen ziehen sich über die Fläche. Hier haben Oma und Opa ihr leckeres Gemüse gepflanzt. Es scheint als seien die Pflanzen in den unzähligen Hochbeeten noch immer quicklebendig. Wer hat sich darum gekümmert? Etwas abseits steht eine Engelsstatue aus Marmor in einem prächtig blühenden Kreis aus Fingerhut."
 
 schuppen
 "Schuppen", "im",
@@ -42,38 +62,239 @@ keller
 "Keller", "im",
 "Ein ziemlich leerer Kellerraum. Eine einzige kleine Wandleuchte wirft schummriges Licht. Eine knarrende Holztreppe führt hoch in den Wohnbereich."
 
-weinkeller
-"Weinkeller", "im",
-"Der kleine dunkle Raum enthält Regale für einige Hundert Flaschen. Die Weine sind nach Jahrgang sortiert. Es ist kühl und feucht."
+weinkammer
+"Weinkammer", "in der",
+"Der kleine dunkle Raum enthält Regale für einige Hundert Flaschen. Die Weine sind nach Jahrgang und Weingut sortiert. Es ist kühl und feucht."
 
 bib
 "Bibliothek", "in der",
-"Jede Wand dieses Raumes ist mit Bücherregalen voll gestellt. In der Mitte steht ein kleiner Holztisch und zwei Ledersessel. Ich weiß noch genau, wie Opa mich oft mit hier runter genommen und aus seinen Büchern vorgelesen hat."
+"""
+Jede Wand dieses Raumes ist mit Bücherregalen voll gestellt. In der Mitte steht ein kleiner Holztisch und zwei Ledersessel. Ich weiß noch genau, wie Opa mich oft mit hier runter genommen und aus seinen Büchern vorgelesen hat.
+An der Westwand hängt ein Messing-Schild mit der Einprägung '5-L'."""
 
 fackelraum
 "Fackelraum", "im",
-"Ein ziemlich kahler Raum aus massiven Steinwänden. An jeder Seite hängt lediglich eine Fackel, die sich beim Betreten des Raumes auf mysteriöse Weise entflammt hat."
+"""
+Ein ziemlich kahler Raum aus massiven Steinwänden. An jeder Seite hängt lediglich eine Fackel, die sich beim Betreten des Raumes auf mysteriöse Weise entflammt hat.
+An der Nordwand hängt ein Messing-Schild mit der Einprägung '3-V'."""
 
 marmorraum
 "Marmorhalle", "in der",
-"Ein großer mit weißem Marmor ausgekleideter Raum. In der Mitte ragt eine Fischstatue aus einem Marmorbrunnen und speit eine Wasserfontäne."
+"""
+Ein prächtiger mit weißem Marmor ausgekleideter Raum. In der Mitte ragt eine Fischstatue aus einem Marmorbrunnen und speit eine Wasserfontäne.
+An der Ostwand hängt ein Messing-Schild mit der Einprägung '6-A'."""
 
 dunkelkammer
 "Dunkelkammer", "in der",
-"Es ist sehr dunkel und ich kann fast nichts erkennen. Nur an der Westwand brennt eine kleine rote Glühbirne."
+"""
+Es ist sehr dunkel und ich kann fast nichts erkennen. Nur an der Westwand brennt eine kleine rote Glühbirne.
+An der Nordwand hängt ein Messing-Schild mit der Einprägung '2-P'."""
 
 gewaechshaus
 "Gewächshaus", "im",
-"Ein unterirdisches Gewächshaus voller riesiger Pflanzen, die in bunten Farben blühen. In der Mitte stehen einige in einem Kreis wachsende Fingerhüte. Über eine große Glaskuppel fällt Licht von draußen hinein."
+"""
+Ein unterirdisches Gewächshaus voller riesiger Pflanzen, die in bunten Farben blühen. In der Mitte wachsen Fingerhüte im Kreis. Über eine große Glaskuppel fällt Licht von draußen hinein.
+An der Südwand hängt ein Messing-Schild mit der Einprägung '4-S'."""
 
 kristallhoehle
 "Kristallhöhle", "in der",
-"Das hier muss eine Höhle tief unter dem Haus sein. Ein kleiner Bach rinnt über den Boden. In der Mitte der Höhle steht ein Steinpodest. Ein einziger Sonnenstrahl scheint durch einen Riss in der Decke. Es ist feucht und kalt."
+"""
+Das hier muss eine Höhle tief unter dem Haus sein. Ein kleiner Bach rinnt über den Boden. In der Mitte der Höhle steht ein Steinpodest. Ein einziger Sonnenstrahl scheint durch einen Riss in der Decke. Es ist feucht und kalt.
+An der Westwand hängt ein Messing-Schild mit der Einprägung '7-A'."""
 
 spiegelkabinett
 "Spiegelkabinett", "im",
-"Ein mysteriöser Raum, der komplett mit Spiegeln ausgekleidet ist. Ich kann mich unendlich oft in ihnen erkennen. Doch ich bin kleiner und sehe viel jünger aus. Habe ich da meinen alten Lieblingspulli an?"
+"""
+Ein mysteriöser Raum, der komplett mit Spiegeln ausgekleidet ist. Ich kann mich unendlich oft in ihnen erkennen. Doch ich bin kleiner und sehe viel jünger aus. Habe ich da meinen alten Lieblingspulli an?
+An der Nordwand hängt ein Messing-Schild mit der Einprägung '1-C'"""
 
 himmelssaal
-"Himmelssaal", "im",
-"Es scheint, als sei ich von Wolken umgeben. Ein schwebender Steinpfad führt zu einem Brunnen aus Amethyst. Darin befindet sich eine klare Flüssigkeit. Es ist ein überaus verwunschener Ort."
+"Himmelssaal", "in einem",
+"Es scheint, als sei ich von Wolken umgeben. Ein schwebender Steinpfad führt zu einem Tor aus Amethyst. Es ist ein überaus verwunschener Ort."
+
+brunnen
+"merkwürdigen Ort", "an einem",
+"Wo bin ich hier? Überall nur gleißendes Licht. Vor mir schwebt eine Schale aus Amethyst, in der sich eine klare Flüssigkeit befindet. Kann ich hier etwas einfüllen?"
+
+-- -- -- -- --
+
+I T E M S:
+
+(important)
+
+brief
+"Brief", """
+Der Brief der einst zusammen mit dem rostigen alten Schlüssel auf meinem Kopfkissen lag.
+Darin steht:
+Willst du öffnen jeden Ort,
+nimm des dritten Verses fünftes Wort."""
+
+k1
+"Hausschlüssel", """
+Ein rostiger alter Schlüssel für Oma und Opas Waldhäuschen."""
+
+k2
+"Brecheisen", """
+Ein altes rostiges Brecheisen. Hiermit kann man bestimmt gut Dinge aufhebeln."""
+
+k3
+gedicht
+"Gedicht", """
+Das Gedicht 'Fingerhütchen' von Conrad Ferdinand Meyer ist auf einem mit Fingerhüten verzierten Pergament geschrieben:
+FINGERHÜTCHEN
+Liebe Kinder, wißt ihr, wo
+Fingerhut zu Hause?
+Tief im Tal von Acherloo
+hat er Herd und Klause;
+aber schon in jungen Tagen
+muß er einen Höcker tragen;
+geht er, wunderlicher nie
+wallte man auf Erden!
+Sitzt er, staunen Kinn und Knie,
+daß sie Nachbarn werden.
+(...)"""
+
+k4
+portrait
+"Portrait", """
+Ein wunderschönes Portrait von Oma vor dem Eifelturm. Ja so fröhlich sah sie immer aus. Unterzeichnet wurde es mit 'C.R.W. 11/07/1961'."""
+
+k5
+"Feuerzeug", """
+Ein stinknormales Feuerzeug."""
+
+k6
+"Marmorfigur", """
+Ein aus weißem Marmor geschliffener Siegelstein in Form einer Raute. ◊"""
+
+k7
+"Taschenlampe", """
+Eine alte Stabtaschenlampe. Mit der ich früher immer in weite Ferne geleuchtet habe."""
+
+k8
+morse
+"Morsealphabet", """
+Ein altes Morsealphabet auf Pergament:
+A: ● ▬      B: ▬ ● ● ●      C: ▬ ● ▬ ●      D: ▬ ● ●    E: ●
+F: ● ● ▬ ●  G: ▬ ▬ ●        H: ● ● ● ●      I: ● ●      J: ● ▬ ▬ ▬
+K: ▬ ● ▬    L: ● ▬ ● ●      M: ▬ ▬          N: ▬ ●      O: ▬ ▬ ▬
+P: ● ▬ ▬ ●  Q: ▬ ▬ ● ▬      R: ● ▬ ●        S: ● ● ●    T: ▬
+U: ● ● ▬    V: ● ● ● ▬      W: ● ▬ ▬        X: ▬ ● ● ▬  Y: ▬ ● ▬ ▬
+Z: ▬ ▬ ● ●"""
+
+pflanzenkarte
+"Pflanzenkarte", """
+Ein Karte aus einer alten Pflanzenkartei.
+FINGERHUT
+Wissenschaftlicher Name: Digitalis
+Familie: Wegerichgewächse (Plantaginaceae)
+Ordnung: Lippenblütlerartige (Lamiales)
+Die Fingerhüte sind eine Pflanzengattung aus der Familie der Wegerichgewächse. Die etwa 25 Arten sind in Europa, Nordafrika und im westlichen Asien verbreitet.
+(...)"""
+
+k9
+"Fingerhutsamen", """
+Jede dieser Kapseln enthält einige Samen, aus den neue Fingerhüte entspringen können."""
+
+k10
+"Amethyst", """
+Ein wirklich riesiger dunkel violetter Amethyst-Kristall. Wie viel mag der wohl wiegen?"""
+
+k11
+chiffre
+"Lexikonseite", """
+Eine Seite aus einem alten Lexikon./n/n
+CÄSAR-CHIFFRE
+Die Caesar-Verschlüsselung (auch als Cäsar-Chiffre bezeichnet) ist ein einfaches symmetrisches Verschlüsselungsverfahren, das auf der monographischen und monoalphabetischen Substitution basiert.
+Bei der Verschlüsselung wird jeder Buchstabe des Klartexts auf einen Geheimtextbuchstaben abgebildet. Diese Abbildung ergibt sich, indem man die Zeichen eines geordneten Alphabets um eine bestimmte Anzahl zyklisch nach rechts verschiebt (rotiert); zyklisch bedeutet, dass man beim Verschieben über Z hinaus wieder bei A anfangend weiterzählt. 
+Die Anzahl der verschobenen Zeichen bildet den Schlüssel, der für die gesamte Verschlüsselung unverändert bleibt. 
+Beispiel für eine Verschiebung um drei Zeichen:
+A B C D ... W X Y Z
+D E F E ... Z A B C"""
+
+k12
+"Fläschchen", """
+Ein durchsichtiges Glasfläschchen gefüllt mit einer mysteriösen silber schimmernden Flüssigkeit. Auf einem kleinen Etikett steht:
+•~ liquida memoria ~•"""
+
+(unimportant)
+
+...
+
+-- -- -- -- --
+
+G A T E S:
+
+(closed)
+
+g_k1
+"Haustür", "Eine weiß gestrichene Holztür mit einem kleinen Fenster. Auf einem lila Schild steht 'Herzlich Willkommen!'", k1
+
+g_k2
+"schwere Eisentür", "Eine massive alte Tür aus Eisen. Meine Kraft reicht nicht aus sie zu bewegen. Sie scheint zu klemmen.", k2
+
+g_k3
+"Holztür mit geschnitzten Verzierungen", "Eine dunkle Holztür mit verwunschenen Schnitzereien. In der Mitte sitzen acht Walzen mit denen jeweils die Buchstaben von A - Z auswählbar sind. Was mag hier nur das Passwort sein?", "Acherloo"
+
+g_k4
+"Gemälde von Oma", "Ein riesiges Portrait von Oma vor dem Eifelturm. Habe ich das nicht auch schon wo anders gesehen? Unter dem Gemälde auf Fußhöhe befindet sich ein Schild mit der Aufschrift 'Unser Tag in Paris' und daneben kann man acht Zahlen in ein Nummernpad eintippen.", "11071961"
+
+g_k5
+"Steinwand", "In der rechten Ecke der Westwand kann ich einen kleinen Schlitz erkennen. Wenn ich dagegen klopfe, hört sie sich irgendwie anders an als die übrigen Wände. Außerdem guckt knapp unter der Fackel eine Art Docht heraus. Es scheint, als hätte er schonmal gebrannt.", k5
+
+g_k6
+"Marmorwand", "Eine ebenso prächtige Wand aus Marmor. In der Mitte befindet sich ein kleine Vertiefung in Form einer Raute. ◊", k6
+
+g_k7
+"Steinwand", """
+In Mitten der Wand, knapp unter der Glühbirne hängt ein kleines Schild. Durch das minimale Licht kann man die Aufschrift gerade so lesen:
+Bring Licht ins Dunkle!
+Dadrunter befindet sich ein kleines dunkles Loch.""", k7
+
+g_k8
+"Holztür", """
+Die Tür aus dunklem Nußholz ist hinter einer großen Monstera Pflanze versteckt. In das Holz sind merkwürdige Zeichen eingraviert:
+▬ ● ●   ● ●   ▬ ▬ ●   ● ●   ▬   ● ▬   ● ▬ ● ●   ● ●   ● ● ●
+Neben dem Türknauf befindet sich eine kleine Tastatur.""", "digitalis"
+
+g_k9
+"Spiegeltür", "Eine Tür mit einem großen Spiegel. In der Mitte befindet sich ein kleines Loch. Dadrüber wurde ein prächtiger Fingerhut gemalt. Es sieht so aus, als würde er aus dem Loch herauswachsen. Wie kann ich diese Tür nur öffnen? Vielleicht muss ich etwas in das Loch werfen.", k9
+
+g_k10
+"Marmortor", """
+Dieses Tor ist der Eingang in den riesigen mysteriösen Marmorblock, der schon seit jeher im Garten von Oma und Opa stand. Ich habe mich schon immer gefragt, was es wohl damit auf sich hat. In Mitten des Tores befindet sich eine Pendelwaage mit der Aufschrift:
+Der wohl Größte seiner Art.""", k10
+
+g_k11
+"Tor aus Amethyst", """
+Ein riesiges amethystfarbenes Tor. Darin eingraviert steht in großen Buchstaben: ALLE ZUSAMMEN, VERSCHOBEN UM 7.
+Etwas sagt mir, dass ich ein Passwort mit den Fingern auf das Tor zeichnen soll. Doch um welches Wort handelt es sich?"""
+
+(open)
+
+g_01
+"Tür zwischen Flur und Schlafzimmer", "Eine einfache weiße Holztür."
+
+g_02
+"Tür zwischen Schlaf- und Badezimmer", "Eine schöne fliederfarbene Holztür."
+
+g_03
+"Tür zwischen Flur und Wohnzimmer", "Eine weiße mit Stuck verzierte Holztür. In der oberen Hälfte sitzt ein kleines Fenster."
+
+g_04
+"Tür zwischen Bade- und Wohnzimmer", "Eine einfache weiße Holztür."
+
+g_05
+"Tür zwischen Wohnzimmer und Küche", "Eine einfache weiße Holztür. In der oberen Hälfte sitzt ein Fenster."
+
+g_06
+"Gartentür", "Die Hintertür zwischen Wohnzimmer und Garten. Der weiße Lack bröckelt an einigen Stellen."
+
+g_07
+"Weg zwischen Gartenwiese und Beet", "Ein einfacher Weg aus flachen Steinen."
+
+g_08
+"Schuppentür", "Eine alte morsche Holztür, die beim Öffnen und Schließen quietscht."
+
+g_09
+"Kellertür", "Eine alte Metalltür, zwischen Keller und Weinkammer."

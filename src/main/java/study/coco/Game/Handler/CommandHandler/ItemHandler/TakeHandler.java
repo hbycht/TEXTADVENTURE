@@ -11,8 +11,8 @@ public class TakeHandler extends ItemHandler {
     private static final String[] commands = {"t", "take"};
     private static final String type = "take";
 
-    private static final String takeMsg = "%s is now in my inventory.";
-    private static final String errorMsg = "There is no item \"%s\"... Did I spell it right?";
+    private static final String takeMsg = "Der Gegenstand <%s> ist nun in meinem Inventar.";
+    private static final String errorMsg = "Es gibt kein Item '%s' an diesem Ort... Habe ich es richtig geschrieben?";
 
     public TakeHandler(Game game) {
         super(game, type, commands, "");

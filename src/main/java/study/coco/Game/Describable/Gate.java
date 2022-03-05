@@ -8,10 +8,10 @@ public class Gate extends Describable {
     private final String keyword;
     private boolean isOpen;
 
-    private final String stillOpenMsg = "... but the %s is still open. I can pass it.";
-    private final String rightKeyMsg = "... CLICK! The %s opens and I can pass it now.";
-    private final String wrongKeyMsg = "... but I can't open the %s with %s.";
-    private final String wrongKeywordMsg = "... but '%s' is not the right keyword to open the %s.";
+    private final String stillOpenMsg = "... aber der Durchgang %s ist schon offen. Ich kann ihn passieren.";
+    private final String rightKeyMsg = "... Zack! Der Durchgang %s hat sich geöffnet. Ich kann ihn nun durchqueren.";
+    private final String wrongKeyMsg = "... allerdings kann ich den Durchgang %s nicht mit dem Gegenstand <%s>.";
+    private final String wrongKeywordMsg = "... allerdings ist '%s' nicht das richtige Passwort, um den Durchgang %s zu öffnen.";
 
     /**
      * Constructor for an OPEN gate

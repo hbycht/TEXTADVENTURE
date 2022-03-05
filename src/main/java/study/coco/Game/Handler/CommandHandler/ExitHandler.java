@@ -10,8 +10,8 @@ import java.util.Arrays;
 public class ExitHandler extends CommandHandler{
 
     private static final String[] commands = {"exit", "quit", "q", "x"};
-    private static final String message = "Continue the game...";           // Message if the player don't leave the game.
-    private static final String exitMessage = "Bye, bye! See you soon!";    // Message if the player really exits the game.
+    private static final String message = "Dann geht es wohl weiter...";           // Message if the player don't leave the game.
+    private static final String exitMessage = "Tschüüüüss! Auf Wiedersehen!";    // Message if the player really exits the game.
     private static final String type = "exit";
 
     public ExitHandler(Game game) {
@@ -23,7 +23,7 @@ public class ExitHandler extends CommandHandler{
         super.handle();
 
         // show exit confirmation message
-        String lineInput = this.game.getLineInput("\nDo I really want to quit?\n(Type \"Y\" to confirm.)\n >> ");
+        String lineInput = this.game.getLineInput("\nWill ich das Spiel wirklich beenden?\n(Schreib' \"Y\" zur Bestätigung.)\n >> ");
         // check if the user inputs "y" or "yes". (Add more phrases if needed.)
         String[] confirms = new String[]{"y","yes"};
         if(Arrays.asList(confirms).contains(lineInput)) {

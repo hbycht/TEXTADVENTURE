@@ -8,10 +8,12 @@ public class Location extends Describable {
     private Gate[] gates;
     private Inventory inventory;
 
-    private final String locationNameMsg = "I'm standing %s %s.";
-    private String itemOverviewMsg = "I can see %d item%s:";
-    private String noItemsMsg = "I can't see any items.";
-    private final String dirDescriptionMsg = "In the %s I can see a %s.";
+    private final String locationNameMsg = "Nun bin ich %s %s.";
+    private String itemOverviewMsg = "Ich kann %d Item%s sehen:";
+    private String noItemsMsg = "Hier scheint es keine Gegenstände zu geben.";
+    private final String dirGateDescriptionMsg = "Im %s kann ich den Durchgang %s sehen.";
+    private final String dirLocationDescriptionMsg = "Im %s kann ich den Ort %s sehen.";
+
 
 
     public Location(String name, String preposition, String description) {
@@ -67,8 +69,15 @@ public class Location extends Describable {
         String dirOverview = "";
 
         for(int i = 0; i < this.gates.length; i++){
-            if(this.gates[i] != null)
-                dirOverview += String.format(dirDescriptionMsg, Direction.values()[i].asString(), this.gates[i].getName().toUpperCase()) + "\n";
+            // If there is a gate
+            if(this.gates[i] != null){
+                // If this gate is open
+                if(this.gates[i].isOpen())
+                    dirOverview += String.format(dirLocationDescriptionMsg, Direction.values()[i].asString(), this.gates[i].getLocationBehind(this).getName().toUpperCase()) + "\n";
+                // If this gate is closed
+                else
+                    dirOverview += String.format(dirGateDescriptionMsg, Direction.values()[i].asString(), this.gates[i].getName().toUpperCase()) + "\n";
+            }
         }
         return dirOverview;
     }

@@ -9,8 +9,9 @@ import study.coco.Game.Describable.Item;
  */
 public abstract class ItemHandler extends CommandHandler {
 
-    private static final String noItemMsg = "I have to specify an <ITEM> to %s it.";
-    private static final String noItemToUseMsg = "I have to specify an <ITEM> or a <KEYWORD> to USE it.";
+    private static final String noItemToUseMsg = "Ich muss ein <ITEM> oder ein <KEYWORD> angeben, um es zu BENUTZEN.";
+    private static final String noItemToTakeMsg = "Ich muss ein <ITEM> angeben, um es AUF ZU NEHMEN.";
+    private static final String noItemToDropMsg = "Ich muss ein <ITEM> angeben, um es AB ZU LEGEN.";
 
     public ItemHandler(Game game, String type, String[] commands, String message) {
         super(game, type, commands, message);
@@ -23,13 +24,18 @@ public abstract class ItemHandler extends CommandHandler {
         // CHECK IF THE USER HAS GIVEN AN OBJECT
         if(!this.game.getInputObject().isBlank())
             this.handleItem();
-        else
+        else{
             // FOR "USE" HANDLER
             if(this.getType().equalsIgnoreCase("use"))
-                this.setMessage(String.format(noItemToUseMsg));
-            // FOR EVERY OTHER HANDLER
-            else
-                this.setMessage(String.format(noItemMsg, this.getType().toUpperCase()));
+                this.setMessage(noItemToUseMsg);
+                // FOR "TAKE" HANDLER
+            else if(this.getType().equalsIgnoreCase("take"))
+                this.setMessage(noItemToTakeMsg);
+                // FOR "DROP" HANDLER
+            else if(this.getType().equalsIgnoreCase("drop"))
+                this.setMessage(noItemToDropMsg);
+        }
+
     }
 
     /**

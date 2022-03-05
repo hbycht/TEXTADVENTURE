@@ -12,8 +12,8 @@ public class DropHandler extends ItemHandler {
     private static final String[] commands = {"d", "drop"};
     private static final String type = "drop";
 
-    private static final String dropMsg = "The %s is now %s.";
-    private static final String errorMsg = "There is no item \"%s\" in my inventory... Did I spell it right?";
+    private static final String dropMsg = "Das Item <%s> liegt nun %s.";
+    private static final String errorMsg = "Es gibt kein Item '%s' in meinem Inventar... Habe ich es richtig geschrieben?";
 
     public DropHandler(Game game) {
         super(game, type, commands, "");

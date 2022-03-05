@@ -16,8 +16,8 @@ public class LookHandler extends CommandHandler {
     private static final String[] commands = {"l", "look"};
     private static final String type = "look";
 
-    private static final String lookMsg = "Let me check this %s...\n%s";
-    private String errorMsg = "I can't see a %s... Did I spell it right?";
+    private static final String lookMsg = "Lass mich <%s> mal genauer betrachten...\n%s";
+    private String errorMsg = "Ich sehe nichts mit dem Namen %s... Hab' ich's richtig geschrieben?";
 
     public LookHandler(Game game) {
         super(game, type, commands, "");

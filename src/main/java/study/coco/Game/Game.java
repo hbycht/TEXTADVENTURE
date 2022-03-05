@@ -17,7 +17,6 @@ import study.coco.Game.Handler.CommandHandler.ItemHandler.TakeHandler;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class Game {
     private Terminal terminal;
@@ -33,8 +32,8 @@ public class Game {
 
     // some message presets
     private String inputCall = " >> ";
-    private String inputMsg = "\nWhat should I do next?";
-    private String gameHeadline = "\nM Y S T E R I O U S   G A R D E N\n- - - - - - -\nA TEXT ADVENTURE by Henning Brode © 2022\n";
+    private String inputMsg = "\nWas soll ich als nächstes tun?";
+    private String gameHeadline = "\nM Y S T E R I O U S   G A R D E N\n- - - - - - -\nEin TEXT ADVENTURE von Henning Brode © 2022\n";
     private String introMsg = "Game intro...\nbla bla bla....\n\nType 'help' to get some useful instructions.\n\n";
     private String solvedGameMsg = "Congratulation! You won the game!";
 
@@ -51,7 +50,7 @@ public class Game {
     private Player player;
 
     // init final items
-    private Item finalItem;
+    private Location finalLocation;
     private Item finalKey;
 
     // init game states
@@ -75,54 +74,210 @@ public class Game {
         this.handlers.add(new InventoryHandler(this));
         this.handlers.add(new LookHandler(this));
 
-        // init all items
-        Item water = new Item("water", "A cold & liquid something you can drink.");
-        Item fire = new Item("fire", "A burning hot & bright something you can cook with.");
-        Item air = new Item("air", "A fresh & volatile something you can blow things with.");
-        Item earth = new Item("earth", "A thick & nutritious something you can eat.");
-        Item stone = new Item("mysterious stone", "A mysterious shinny stone. I wonder what I can do with it...");
+        // INIT ALL ITEMS
+        Item brief = new Item("Brief", """
+Der Brief der einst zusammen mit dem rostigen alten Schlüssel auf meinem Kopfkissen lag.\n\n
+Darin steht:
+Willst du öffnen jeden Ort,
+nimm des dritten Verses fünftes Wort.""");
+        Item k1 = new Item("Hausschlüssel", """
+Ein rostiger alter Schlüssel für Oma und Opas Waldhäuschen.""");
+        Item k2 = new Item("Brecheisen", """
+Ein altes rostiges Brecheisen. Hiermit kann man bestimmt gut Dinge aufhebeln.""");
+        Item gedicht = new Item("Gedicht", """
+Das Gedicht 'Fingerhütchen' von Conrad Ferdinand Meyer ist auf einem mit Fingerhüten verzierten Pergament geschrieben:
+FINGERHÜTCHEN
+Liebe Kinder, wißt ihr, wo
+Fingerhut zu Hause?
+Tief im Tal von Acherloo
+hat er Herd und Klause;
+aber schon in jungen Tagen
+muß er einen Höcker tragen;
+geht er, wunderlicher nie
+wallte man auf Erden!
+Sitzt er, staunen Kinn und Knie,
+daß sie Nachbarn werden.
+(...)""");
+        Item portrait = new Item("Portrait", """
+Ein wunderschönes Portrait von Oma vor dem Eifelturm. Ja so fröhlich sah sie immer aus. Unterzeichnet wurde es mit 'C.R.W. 11/07/1961'.""");
+        Item k5 = new Item("Feuerzeug", """
+Ein stinknormales Feuerzeug.""");
+        Item k6 = new Item("Marmorfigur", """
+Ein aus weißem Marmor geschliffener Siegelstein in Form einer Raute. ◊""");
+        Item k7 = new Item("Taschenlampe", """
+Eine alte Stabtaschenlampe. Mit der ich früher immer in weite Ferne geleuchtet habe.""");
+        Item morse = new Item("Morsealphabet", """
+Ein altes Morsealphabet auf Pergament:
+A: ● ▬      B: ▬ ● ● ●      C: ▬ ● ▬ ●      D: ▬ ● ●    E: ●
+F: ● ● ▬ ●  G: ▬ ▬ ●        H: ● ● ● ●      I: ● ●      J: ● ▬ ▬ ▬
+K: ▬ ● ▬    L: ● ▬ ● ●      M: ▬ ▬          N: ▬ ●      O: ▬ ▬ ▬
+P: ● ▬ ▬ ●  Q: ▬ ▬ ● ▬      R: ● ▬ ●        S: ● ● ●    T: ▬
+U: ● ● ▬    V: ● ● ● ▬      W: ● ▬ ▬        X: ▬ ● ● ▬  Y: ▬ ● ▬ ▬
+Z: ▬ ▬ ● ●""");
+        Item pflanzenkarte = new Item("Pflanzenkarte", """
+Ein Karte aus einer alten Pflanzenkartei.
+FINGERHUT
+Wissenschaftlicher Name: Digitalis
+Familie: Wegerichgewächse (Plantaginaceae)
+Ordnung: Lippenblütlerartige (Lamiales)
+Die Fingerhüte sind eine Pflanzengattung aus der Familie der Wegerichgewächse. Die etwa 25 Arten sind in Europa, Nordafrika und im westlichen Asien verbreitet.
+(...)""");
+        Item k9 = new Item("Fingerhutsamen", """
+Jede dieser Kapseln enthält einige Samen, aus den neue Fingerhüte entspringen können.""");
+        Item k10 = new Item("Amethyst", """
+Ein wirklich riesiger dunkel violetter Amethyst-Kristall. Wie viel mag der wohl wiegen?""");
+        Item chiffre = new Item("Lexikonseite", """
+Eine Seite aus einem alten Lexikon./n/n
+CÄSAR-CHIFFRE
+Die Caesar-Verschlüsselung (auch als Cäsar-Chiffre bezeichnet) ist ein einfaches symmetrisches Verschlüsselungsverfahren, das auf der monographischen und monoalphabetischen Substitution basiert.
+Bei der Verschlüsselung wird jeder Buchstabe des Klartexts auf einen Geheimtextbuchstaben abgebildet. Diese Abbildung ergibt sich, indem man die Zeichen eines geordneten Alphabets um eine bestimmte Anzahl zyklisch nach rechts verschiebt (rotiert); zyklisch bedeutet, dass man beim Verschieben über Z hinaus wieder bei A anfangend weiterzählt. 
+Die Anzahl der verschobenen Zeichen bildet den Schlüssel, der für die gesamte Verschlüsselung unverändert bleibt. 
+Beispiel für eine Verschiebung um drei Zeichen:
+A B C D ... W X Y Z
+D E F E ... Z A B C""");
+        Item k12 = new Item("Fläschchen", """
+Ein durchsichtiges Glasfläschchen gefüllt mit einer mysteriösen silber schimmernden Flüssigkeit. Auf einem kleinen Etikett steht:
+•~ liquida memoria ~•""");
 
-        // set final items
-        // (player has to look at the finalItem and then use the finalKey)
-        finalItem = water;
-        finalKey = stone;
+        // INIT ALL LOCATIONS
+        Location vorgarten = new Location("Vorgarten", "im",
+                "Ein kleiner mit flachen Steinen ausgelegter Weg führt zum Eingang des Hauses. Auf der linken Seite blühen farbenfrohe Blumen. Rechts vom Weg gibt es einen kleinen Teich, in dem drei kleine Goldfische schwimmen. Im Süden steht der alte schwarze Audi, mit dem ich hergefahren bin.");
+        Location flur = new Location("Hausflur", "im",
+                "Ein kleiner schmaler Gang bildet den Eingangsbereich des kleinen Hauses. An der Garderobe hängen noch zwei alte Jacken und ein Hut. Auf dem kleinen Holzschränkchen steht ein Spiegel.");
+        Location schlafzimmer = new Location("Schlafzimmer", "im",
+                "Ein gemütlicher kleiner Raum mit einem großen Bett. An der Wand steht ein Kleiderschrank aus altem Holz.");
+        Location bad = new Location("Badezimmer", "im",
+                "Ein vollständig mit weißem Marmor ausgekleideter Raum. Die Verkleidung der Armatur hat Oma aus bunten Mosaiksteinen selbst gestaltet. Es riecht noch immer leicht nach Lavendel.");
+        Location wohnzimmer = new Location("Wohnzimmer", "im",
+                "Ein für dieses Haus eher ungewöhnlich großer Raum. Die alte Schrankwand beinhaltet allerhand Krimskrams. Neben dem großen gemütlichen Sofa steht Opas alter Plattenspieler.");
+        Location kueche = new Location("Küche", "in der",
+                "Ein kleiner fliederfarbener Geschirrschrank steht neben dem alten Gasherd. Auf einem kleinen Tisch steht ein Vase mit getrockneten Wildblumen. Hier hat Oma immer ihren leckeren Apfelkuchen gebacken.");
+        Location garten = new Location("Garten", "im",
+                "Eine große wild gewachsene Wiese ist von zahlreichen Beeten umgeben. Auf der Fläche verteilt stehen mehrere Obstbäume, die nach wie vor Früchte tragen. Um den kleinen Tisch stehen vier Holzstühle. Etwas entfernt bewegt sich die alte Schaukel im Wind.");
+        Location beet = new Location("Beet", "im",
+                "Mehrere Beetreihen ziehen sich über die Fläche. Hier haben Oma und Opa ihr leckeres Gemüse gepflanzt. Es scheint als seien die Pflanzen in den unzähligen Hochbeeten noch immer quicklebendig. Wer hat sich darum gekümmert? Etwas abseits steht eine Engelsstatue aus Marmor in einem prächtig blühenden Kreis aus Fingerhut.");
+        Location schuppen = new Location("Schuppen", "im",
+                "In dieser morschen Laube lässt sich so gut wie jedes Werkzeug finden. Eine staubige Glühbirne spendet nur wenig Licht. Es riecht nach Benzin vom alten Rasenmäher.");
+        Location keller = new Location("Keller", "im",
+                "Ein ziemlich leerer Kellerraum. Eine einzige kleine Wandleuchte wirft schummriges Licht. Eine knarrende Holztreppe führt hoch in den Wohnbereich.");
+        Location weinkammer = new Location("Weinkammer", "in der",
+                "Der kleine dunkle Raum enthält Regale für einige Hundert Flaschen. Die Weine sind nach Jahrgang und Weingut sortiert. Es ist kühl und feucht.");
+        Location bib = new Location("Bibliothek", "in der",
+                """
+                Jede Wand dieses Raumes ist mit Bücherregalen voll gestellt. In der Mitte steht ein kleiner Holztisch und zwei Ledersessel. Ich weiß noch genau, wie Opa mich oft mit hier runter genommen und aus seinen Büchern vorgelesen hat.
+                An der Westwand hängt ein Messing-Schild mit der Einprägung '5-L'.""");
+        Location fackelraum = new Location("Fackelraum", "im",
+                """
+                Ein ziemlich kahler Raum aus massiven Steinwänden. An jeder Seite hängt lediglich eine Fackel, die sich beim Betreten des Raumes auf mysteriöse Weise entflammt hat.
+                An der Nordwand hängt ein Messing-Schild mit der Einprägung '3-V'.""");
+        Location marmorraum = new Location("Marmorhalle", "in der",
+                """
+                Ein prächtiger mit weißem Marmor ausgekleideter Raum. In der Mitte ragt eine Fischstatue aus einem Marmorbrunnen und speit eine Wasserfontäne.
+                An der Ostwand hängt ein Messing-Schild mit der Einprägung '6-A'.""");
+        Location dunkelkammer = new Location("Dunkelkammer", "in der",
+                """
+                Es ist sehr dunkel und ich kann fast nichts erkennen. Nur an der Westwand brennt eine kleine rote Glühbirne.
+                An der Nordwand hängt ein Messing-Schild mit der Einprägung '2-P'.""");
+        Location gewaechshaus = new Location("Gewächshaus", "im",
+                """
+                Ein unterirdisches Gewächshaus voller riesiger Pflanzen, die in bunten Farben blühen. In der Mitte wachsen Fingerhüte im Kreis. Über eine große Glaskuppel fällt Licht von draußen hinein.
+                An der Südwand hängt ein Messing-Schild mit der Einprägung '4-S'.""");
+        Location kristallhoehle = new Location("Kristallhöhle", "in der",
+                """
+                Das hier muss eine Höhle tief unter dem Haus sein. Ein kleiner Bach rinnt über den Boden. In der Mitte der Höhle steht ein Steinpodest. Ein einziger Sonnenstrahl scheint durch einen Riss in der Decke. Es ist feucht und kalt.
+                An der Westwand hängt ein Messing-Schild mit der Einprägung '7-A'.""");
+        Location spiegelkabinett = new Location("Spiegelkabinett", "im",
+                """
+                Ein mysteriöser Raum, der komplett mit Spiegeln ausgekleidet ist. Ich kann mich unendlich oft in ihnen erkennen. Doch ich bin kleiner und sehe viel jünger aus. Habe ich da meinen alten Lieblingspulli an?
+                An der Nordwand hängt ein Messing-Schild mit der Einprägung '1-C'""");
+        Location himmelssaal = new Location("Himmelssaal", "in einem",
+                "Es scheint, als sei ich von Wolken umgeben. Ein schwebender Steinpfad führt zu einem Tor aus Amethyst. Es ist ein überaus verwunschener Ort.");
+        Location brunnen = new Location("merkwürdigen Ort", "an einem",
+                "Wo bin ich hier? Überall nur gleißendes Licht. Vor mir schwebt eine Schale aus Amethyst, in der sich eine klare Flüssigkeit befindet. Kann ich hier etwas einfüllen?");
 
-        // init all locations
-        Location auto = new Location("Auto", "im", "Es ist ein alter Audi mit braunen Armaturen und im Innenraum riecht es noch wie früher, als wir damit immer nach Italien in den Urlaub gefahren sind.");
-        Location start = new Location("center", "in the", "The place where everything began.");
-        Location north = new Location("north", "in the", "It's cold and freezy.");
-        Location south = new Location("south", "in the", "Oh nice, it's super sunny.");
-        Location west = new Location("west", "in the", "Oh wow, so many corn fields.");
-        Location east = new Location("east", "in the", "A quite and calm place.");
+        // INIT ALL GATES
+        // closed gates
+        Gate g_k1 = new Gate("Haustür", "Eine weiß gestrichene Holztür mit einem kleinen Fenster. Auf einem lila Schild steht 'Herzlich Willkommen!'", k1);
+        Gate g_k2 = new Gate("schwere Eisentür", "Eine massive alte Tür aus Eisen. Meine Kraft reicht nicht aus sie zu bewegen. Sie scheint zu klemmen.", k2);
+        Gate g_k3 = new Gate("Holztür mit geschnitzten Verzierungen", "Eine dunkle Holztür mit verwunschenen Schnitzereien. In der Mitte sitzen acht Walzen mit denen jeweils die Buchstaben von A - Z auswählbar sind. Was mag hier nur das Passwort sein?", "Acherloo");
+        Gate g_k4 = new Gate("Gemälde von Oma", "Ein riesiges Portrait von Oma vor dem Eifelturm. Habe ich das nicht auch schon wo anders gesehen? Unter dem Gemälde auf Fußhöhe befindet sich ein Schild mit der Aufschrift 'Unser Tag in Paris' und daneben kann man acht Zahlen in ein Nummernpad eintippen.", "11071961");
+        Gate g_k5 = new Gate("Steinwand", "In der rechten Ecke der Westwand kann ich einen kleinen Schlitz erkennen. Wenn ich dagegen klopfe, hört sie sich irgendwie anders an als die übrigen Wände. Außerdem guckt knapp unter der Fackel eine Art Docht heraus. Es scheint, als hätte er schonmal gebrannt.", k5);
+        Gate g_k6 = new Gate("Marmorwand", "Eine ebenso prächtige Wand aus Marmor. In der Mitte befindet sich ein kleine Vertiefung in Form einer Raute. ◊", k6);
+        Gate g_k7 = new Gate("Steinwand", """
+In Mitten der Wand, knapp unter der Glühbirne hängt ein kleines Schild. Durch das minimale Licht kann man die Aufschrift gerade so lesen:
+Bring Licht ins Dunkle!
+Dadrunter befindet sich ein kleines dunkles Loch.""", k7);
+        Gate g_k8 = new Gate("Holztür", """
+Die Tür aus dunklem Nußholz ist hinter einer großen Monstera Pflanze versteckt. In das Holz sind merkwürdige Zeichen eingraviert:
+▬ ● ●   ● ●   ▬ ▬ ●   ● ●   ▬   ● ▬   ● ▬ ● ●   ● ●   ● ● ●
+Neben dem Türknauf befindet sich eine kleine Tastatur.""", "digitalis");
+        Gate g_k9 = new Gate("Spiegeltür", "Eine Tür mit einem großen Spiegel. In der Mitte befindet sich ein kleines Loch. Dadrüber wurde ein prächtiger Fingerhut gemalt. Es sieht so aus, als würde er aus dem Loch herauswachsen. Wie kann ich diese Tür nur öffnen? Vielleicht muss ich etwas in das Loch werfen.", k9);
+        Gate g_k10 = new Gate("Marmortor", """
+Dieses Tor ist der Eingang in den riesigen mysteriösen Marmorblock, der schon seit jeher im Garten von Oma und Opa stand. Ich habe mich schon immer gefragt, was es wohl damit auf sich hat. In Mitten des Tores befindet sich eine Pendelwaage mit der Aufschrift:
+Der wohl Größte seiner Art.""", k10);
+        Gate g_k11 = new Gate("Tor aus Amethyst", """
+Ein riesiges amethystfarbenes Tor. Darin eingraviert steht in großen Buchstaben: ALLE ZUSAMMEN, VERSCHOBEN UM 7.
+Etwas sagt mir, dass ich ein Passwort mit den Fingern auf das Tor zeichnen soll. Doch um welches Wort handelt es sich?""");
 
-        // init all gates
-        Gate gC_N = new Gate("gate to north", "A sky gate with a small sign on it that says \"North\".", earth);
-        Gate gC_S = new Gate("gate to south", "A sky gate with a small sign on it that says \"South\".", "water");
-        Gate gC_W = new Gate("gate to west", "A sky gate with a small sign on it that says \"West\".");
-        Gate gC_E = new Gate("gate to east", "A sky gate with a small sign on it that says \"East\".");
+        // open gates
+        Gate g_01 = new Gate("Tür zwischen Flur und Schlafzimmer", "Eine einfache weiße Holztür.");
+        Gate g_02 = new Gate("Tür zwischen Schlaf- und Badezimmer", "Eine schöne fliederfarbene Holztür.");
+        Gate g_03 = new Gate("Tür zwischen Flur und Wohnzimmer", "Eine weiße mit Stuck verzierte Holztür. In der oberen Hälfte sitzt ein kleines Fenster.");
+        Gate g_04 = new Gate("Tür zwischen Bade- und Wohnzimmer", "Eine einfache weiße Holztür.");
+        Gate g_05 = new Gate("Tür zwischen Wohnzimmer und Küche", "Eine einfache weiße Holztür. In der oberen Hälfte sitzt ein Fenster.");
+        Gate g_06 = new Gate("Gartentür", "Die Hintertür zwischen Wohnzimmer und Garten. Der weiße Lack bröckelt an einigen Stellen.");
+        Gate g_07 = new Gate("Weg zwischen Gartenwiese und Beet", "Ein einfacher Weg aus flachen Steinen.");
+        Gate g_08 = new Gate("Schuppentür", "Eine alte morsche Holztür, die beim Öffnen und Schließen quietscht.");
+        Gate g_09 = new Gate("Kellertür", "Eine alte Metalltür, zwischen Keller und Weinkammer.");
 
-        // set up all connections between locations
+        // SET UP ALL CONNECTIONS BETWEEN LOCATIONS AND GATES
         // every gate should appear twice, so the assignment automation for the gate endings will work correctly.
-        start.setGates(gC_N, gC_E, gC_S, gC_W);
-        north.setGates(null, null, gC_N, null);
-        east.setGates(null, null, null, gC_E);
-        south.setGates(gC_S, null, null, null);
-        west.setGates(null, gC_W, null, null);
+        vorgarten.setGates(g_k1, null, null, null);
+        flur.setGates(g_03, g_k2, g_k1, g_01);
+        schlafzimmer.setGates(g_02, g_01, null, null);
+        bad.setGates(null, g_04, g_02, null);
+        wohnzimmer.setGates(g_06, g_05, g_03, g_04);
+        kueche.setGates(null, null, null, g_05);
+        garten.setGates(g_k10, g_08, g_06, g_07);
+        beet.setGates(null, null, null, g_07);
+        schuppen.setGates(null, g_08, null, null);
+        keller.setGates(g_k3, g_09, null, g_k2);
+        weinkammer.setGates(null, null, null, g_09);
+        bib.setGates(g_k4, null, g_k3, null);
+        fackelraum.setGates(null, g_k5, g_k4, null);
+        marmorraum.setGates(g_k6, null, null, g_k5);
+        dunkelkammer.setGates(null, null, g_k6, g_k7);
+        gewaechshaus.setGates(g_k9, g_k7, null, g_k8);
+        kristallhoehle.setGates(null, g_k8, null, null);
+        spiegelkabinett.setGates(null, null, g_k9, null);
+        himmelssaal.setGates(g_k11, null, g_k10, null);
+        brunnen.setGates(null, null, g_k11, null);
 
 
         // add items to locations
-        north.inventory().addItem(air);
-        north.inventory().addItem(air);
-        north.inventory().addItem(air);
-        south.inventory().addItem(fire);
-        south.inventory().addItem(fire);
-        west.inventory().addItem(earth);
-        east.inventory().addItem(water);
+        schlafzimmer.inventory().addItem(portrait);
+        wohnzimmer.inventory().addItem(gedicht);
+        kueche.inventory().addItem(k5);
+        beet.inventory().addItem(k9);
+        beet.inventory().addItem(k6);
+        schuppen.inventory().addItem(k7);
+        schuppen.inventory().addItem(k2);
+        bib.inventory().addItem(morse);
+        bib.inventory().addItem(pflanzenkarte);
+        bib.inventory().addItem(chiffre);
+        kristallhoehle.inventory().addItem(k10);
+        spiegelkabinett.inventory().addItem(k12);
+
+        // set final objects
+        // (player has to be in the finalLocation and then use the finalKey)
+        finalLocation = brunnen;
+        finalKey = k12;
 
         // init the player
-        this.player = new Player(start);
+        this.player = new Player(vorgarten);
         // add some items to players inventory
-        player.inventory().addItem(stone);
+        player.inventory().addItem(k1);
+        player.inventory().addItem(brief);
 
         // set game states
         finished = false;
@@ -183,7 +338,8 @@ public class Game {
         System.out.println(this.introMsg);
 
         // first terminal outputs as overview
-        System.out.println(this.player.getPosition().getMoveDescription());
+        System.out.println("Ich stehe " + this.player.getPosition().getPreposition() + " " + this.player.getPosition().getName() + ".");
+        System.out.println(this.player.getPosition().getDescription());
         System.out.println(inputMsg);
     }
 
@@ -287,8 +443,8 @@ public class Game {
      * Returns the final item of the game.
      * @return {@code Item}
      */
-    public Item finalItem() {
-        return finalItem;
+    public Location finalLocation() {
+        return finalLocation;
     }
 
     /**

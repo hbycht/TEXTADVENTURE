@@ -11,8 +11,8 @@ public class InventoryHandler extends CommandHandler {
     private static final String[] commands = {"i", "inv", "inventory"};
     private static final String type = "inventory";
 
-    private static final String inventoryMsg = "My INVENTORY [%d item%s]:\n%s";
-    private String noItemsMsg = "My INVENTORY is empty!";
+    private static final String inventoryMsg = "Mein INVENTAR [%d Item%s]:\n%s";
+    private String noItemsMsg = "Mein INVENTAR ist leer!";
 
     public InventoryHandler(Game game) {
         super(game, type, commands, "");

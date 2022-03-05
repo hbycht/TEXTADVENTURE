@@ -13,9 +13,9 @@ public class UseHandler extends ItemHandler {
     private static final String[] commands = {"u", "use"};
     private static final String type = "use";
 
-    private static final String tryMsg = "I try to use '%s'...\n";
-    private static final String noGateErrorMsg = "... but I don't know which gate I should open with.\nI should go in one direction first.";
-    private static final String noItemErrorMsg = "... but there is no item '%s' in my inventory... Did I spell it right?";
+    private static final String tryMsg = "Ich versuche es mit dem '%s'...\n";
+    private static final String noGateErrorMsg = "... allerdings weiß ich nicht, was ich damit öffnen soll.\nIch sollte erst in eine Richtung gehen.";
+    private static final String noItemErrorMsg = "... allerdings gibt es keinen Gegenstand '%s' in meinem Inventar... Habe ich es richtig geschrieben?";
 
     public UseHandler(Game game) {
         super(game, type, commands, "");
@@ -31,8 +31,8 @@ public class UseHandler extends ItemHandler {
 
         String message = String.format(tryMsg, inputObj);
 
-        // IF PLAYER LOOKS AT FINAL ITEM & USES FINAL KEY
-        if(this.game.finalItem().getName().equalsIgnoreCase(actualItem.getName()) && this.game.finalKey().getName().equalsIgnoreCase(inputObj)){
+        // IF PLAYER IS IN FINAL LOCATION & USES FINAL KEY
+        if(position == this.game.finalLocation() && this.game.finalKey().getName().equalsIgnoreCase(inputObj)){
             // SOLVE THE GAME (Goal of the game)
             this.game.solve();
         }

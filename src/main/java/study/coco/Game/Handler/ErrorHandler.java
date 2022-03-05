@@ -13,7 +13,7 @@ public class ErrorHandler extends Handler {
 
     @Override
     public String getMessage() {
-        return "What do you mean with '" + this.game.getLineInput() + "'?";
+        return "Was meinst du mit '" + this.game.getLineInput() + "'?";
     }
 
     @Override

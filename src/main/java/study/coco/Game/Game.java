@@ -50,9 +50,6 @@ public class Game {
             Ein TEXT ADVENTURE von Henning Brode © 2022
             """;
     private String introMsg = """
-                • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • •
-            =>>  •  Mit dem Kommando 'help' erhältst du einige hilfreiche Tipps.   •
-                • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • •
                     
             | ~EINLEITUNG:
             | Die Straße ist eng und kurvig, schon seit 15 Minuten fällt kaum Licht auf die
@@ -70,10 +67,19 @@ public class Game {
             | mit den Blüten des Fingerhutes verzierter Schlüssel und eine kurze Notiz.
             | Mit beiden Gegenständen habe ich mich nun also auf den weiten Weg in den tiefen Wald
             | gemacht, um die Antworten auf meine Fragen zu finden.
-                 
+            
+            • ZIEL DES SPIELS:
+            • Schau dich um, finde alle Hinweise und öffne alle verschlossenen Türen.
+            • So löst du die Rätsel deiner Ahnen.
+            • 
+            •     • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • •
+            • =>>  •  Mit dem Kommando 'help' erhältst du hilfreiche Tipps.  •
+                  • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • •
+            
+            LOS GEHT'S:
+                
             Ich parke das alte Auto vor dem Haus, stelle den Motor ab und betrete den %s.
-                   
-            Ich schaue mich um:""";
+            """;
     private String solvedGameMsg = """
             Als ich das kleine Fläschchen öffne, strömt die silbrig schimmernde Flüssigkeit hinaus und 
             vermischt sich mit der Flüssigkeit, die sich in der vor mir schwebenden Schale befindet. 
@@ -519,19 +525,12 @@ Doch um welches Wort handelt es sich?""", "violett");
      * Processes the game logic: it executes the handle function of the current handler.
      */
     private void processGameLogic() {
-        // for debugging
-//        this.handleCount++;
-//        this.handleTypes += currentHandler.getType() + " ";
 
         // execute the handler actions
         currentHandler.handle();
 
         // update the terminal
         this.printHandlerMessage();
-
-        // debug
-//        System.out.println("actual Gate: " + (this.player().getActualGate() != null ? this.player().getActualGate().getName() : "no gate selected"));
-//        System.out.println("keyword: " + (this.player().getActualGate().hasKeyword() ? this.player().getActualGate().getKeyword() : "no"));
 
         // ask for next input
         if(!currentHandler.getType().equalsIgnoreCase("error") && !currentHandler.getType().equalsIgnoreCase("exit") && !this.solved) // but don't ask for an ERROR or EXIT command
@@ -544,9 +543,6 @@ Doch um welches Wort handelt es sich?""", "violett");
 
         // Introductions
         System.out.println(String.format(this.introMsg, this.player.getPosition().getName()));
-
-        // TEST OUTRO
-//        System.out.println(this.solvedGameMsg);
 
         // first terminal outputs as overview
         System.out.println(this.player.getPosition().getDescription());
